@@ -1,11 +1,3 @@
-import "./style.css";
-import "./hero/hero.css";
-import "./chapter-one/chapterOne.css";
-import "./chapter-two/chapterTwo.css";
-import "./chapter-three/chapterThree.css";
-import "./chapter-four/chapterFour.css";
-import "./chapter-five/chapterFive.css";
-
 import { initChapterOne } from "./chapter-one/chapterOne.js";
 import { initChapterTwo } from "./chapter-two/chapterTwo.js";
 import { initChapterThree } from "./chapter-three/chapterThree.js";

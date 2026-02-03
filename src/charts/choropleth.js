@@ -131,9 +131,9 @@ export async function initChoropleth(target) {
     ensureTooltip();
 
     const [geo, rows] = await Promise.all([
-        d3.json("/data/europe.geojson"),
+        d3.json("./data/europe.geojson"),
         d3.csv(
-            "/data/whr25_eu27_efta_uk_lifeladder_2024_3yravg.csv",
+            "./data/whr25_eu27_efta_uk_lifeladder_2024_3yravg.csv",
             (d) => ({
                 iso3: (d.iso3 || "").trim(),
                 country: (d.country || "").trim(),
