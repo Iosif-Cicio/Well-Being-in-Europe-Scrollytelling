@@ -1,0 +1,289 @@
+/* ============================================================
+   CHAPTER TWO — TITLE PANEL
+============================================================ */
+
+#chapter-two-panel {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+}
+
+.chapter-two-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("/images/chapterTwoBG.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: -1;
+}
+
+.chapter-two-title-wrapper {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 24px;
+}
+
+.chapter-two-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================
+   CHAPTER TWO — CONTENT WRAPPER
+============================================================ */
+
+#chapter-two-content {
+    background: #f5f5dd;
+    padding: 0 0 160px;
+}
+
+/* ============================================================
+   CHAPTER TWO — INTRO
+============================================================ */
+
+.chapter-two-intro {
+    width: 100%;
+    background: #ececd2;
+    padding: 64px 24px 64px;
+}
+
+.chapter-two-intro > p {
+    max-width: 720px;
+    margin: 0 auto 2.4rem;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    font-weight: 400;
+    color: #202020;
+}
+
+/* ============================================================
+   CHAPTER TWO — SCROLLYTELLING LAYOUT
+============================================================ */
+
+#chapter-two-scrolly {
+    display: grid;
+    grid-template-columns: 420px minmax(640px, 1fr);
+    gap: 96px;
+
+    max-width: 1600px;
+    margin: -64px auto 0;
+    padding: 0 64px;
+
+    position: relative;
+}
+
+/* ============================================================
+   LEFT COLUMN — STEPS
+============================================================ */
+
+#chapter-two-scrolly article {
+    grid-column: 1;
+    z-index: 2;
+}
+
+#chapter-two-scrolly .step {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+}
+
+#chapter-two-scrolly .step:first-child {
+    align-items: flex-start;
+}
+
+#chapter-two-scrolly .step h2,
+#chapter-two-scrolly .step p {
+    border: none !important;
+}
+
+#chapter-two-scrolly .step-content {
+    max-width: 380px;
+    padding-right: 28px;
+    border-right: 2px solid rgba(79, 48, 23, 0.45);
+}
+
+/* ============================================================
+   TYPOGRAPHY
+============================================================ */
+
+#chapter-two-scrolly .step h2 {
+    text-align: right;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    line-height: 1.1;
+    color: #3c220c;
+}
+
+#chapter-two-scrolly .step p {
+    text-align: left;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    color: #3c220c;
+}
+
+/* ============================================================
+   RIGHT COLUMN — STICKY VISUALIZATION (MATCH CHAPTER THREE)
+============================================================ */
+
+#chapter-two-scrolly figure {
+    grid-column: 2;
+    position: sticky;
+    top: 10vh;
+
+    height: 80vh;
+    max-height: 720px;
+    min-height: 520px;
+
+    width: 100%;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #f5f5dd;
+    z-index: 1;
+
+    /* IMPORTANT: no clipping */
+    overflow: visible;
+    box-sizing: border-box;
+}
+
+/* ============================================================
+   CHART CONTAINER — FLEX-BASED (KEY FIX)
+============================================================ */
+
+#chapter-two-viz {
+    flex: 1;              /* ← critical */
+    width: 100%;
+    display: block;
+    overflow: visible;
+}
+
+#chapter-two-viz svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ============================================================
+   FADE-IN
+============================================================ */
+
+#chapter-two-scrolly figure {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 600ms ease, transform 600ms ease;
+    will-change: opacity, transform;
+}
+
+#chapter-two-scrolly figure.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================================
+   SOURCE — PART OF LAYOUT (NO OVERLAY)
+============================================================ */
+
+#chapter-two-source {
+    position: relative;
+
+    margin-top: 8px;
+    margin-left: 32px;
+    margin-bottom: 8px;
+
+    max-width: 420px;
+
+    font-size: 0.7rem;
+    line-height: 1.25;
+    color: rgba(0, 0, 0, 0.42);
+
+    pointer-events: none;
+    transition: opacity 300ms ease;
+}
+
+.chart-source--hidden {
+    opacity: 0;
+}
+
+/* ============================================================
+   TABLET ADJUSTMENTS (≤1024px)
+============================================================ */
+
+@media (max-width: 1024px) {
+
+    #chapter-two-scrolly {
+        grid-template-columns: 340px minmax(520px, 1fr);
+        gap: 56px;
+        padding: 0 40px;
+    }
+
+    #chapter-two-scrolly .step {
+        min-height: 80vh;
+    }
+
+    #chapter-two-scrolly .step-content {
+        max-width: 320px;
+        padding-right: 22px;
+    }
+
+    #chapter-two-scrolly .step h2 {
+        font-size: 1.45rem;
+    }
+
+    #chapter-two-scrolly .step p {
+        font-size: 0.95rem;
+    }
+
+    #chapter-two-scrolly figure {
+        top: 8vh;
+        height: 72vh;
+    }
+
+    #chapter-two-source {
+        margin-left: 24px;
+        max-width: 360px;
+    }
+}
+
+/* ============================================================
+   SMALL HEIGHT SAFEGUARD
+============================================================ */
+
+@media (max-height: 800px) {
+
+    #chapter-two-scrolly figure {
+        top: 16vh;
+        height: 75vh;
+        min-height: 580px;
+    }
+
+    .chapter-two-intro > p {
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    #chapter-two-scrolly .step h2 {
+        font-size: 1.3rem;
+        line-height: 1.2;
+    }
+
+    #chapter-two-scrolly .step p {
+        font-size: 0.92rem;
+        line-height: 1.55;
+    }
+
+    #chapter-two-scrolly .step {
+        min-height: 75vh;
+    }
+}

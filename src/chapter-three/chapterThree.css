@@ -1,0 +1,264 @@
+/* ============================================================
+   CHAPTER THREE — TITLE PANEL
+============================================================ */
+
+#chapter-three-panel {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+}
+
+.chapter-three-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("/images/chapterThreeBG.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: -1;
+}
+
+.chapter-three-title-wrapper {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 24px;
+}
+
+.chapter-three-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================
+   CHAPTER THREE — CONTENT WRAPPER
+============================================================ */
+
+#chapter-three-content {
+    background: #f5f5dd;
+    padding: 0 0 160px;
+}
+
+/* ============================================================
+   CHAPTER THREE — INTRO
+============================================================ */
+
+.chapter-three-intro {
+    width: 100%;
+    background: #ececd2;
+    padding: 64px 24px 64px;
+}
+
+.chapter-three-intro > p {
+    max-width: 720px;
+    margin: 0 auto 2.4rem;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    font-weight: 400;
+    color: #202020;
+}
+
+/* ============================================================
+   CHAPTER THREE — SCROLLYTELLING LAYOUT
+   (matched to Chapter Two)
+============================================================ */
+
+#chapter-three-scrolly {
+    display: grid;
+    grid-template-columns: 420px minmax(640px, 1fr);
+    gap: 64px;
+
+    max-width: 1600px;
+    margin: -64px auto 0;
+    padding: 0 64px;
+
+    position: relative;
+}
+
+/* ============================================================
+   LEFT COLUMN — STEPS
+============================================================ */
+
+#chapter-three-scrolly article {
+    grid-column: 1;
+    z-index: 2;
+}
+
+#chapter-three-scrolly .step {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+}
+
+#chapter-three-scrolly .step:first-child {
+    align-items: flex-start;
+}
+
+#chapter-three-scrolly .step h2,
+#chapter-three-scrolly .step p {
+    border: none !important;
+}
+
+#chapter-three-scrolly .step-content {
+    max-width: 380px;
+    padding-right: 28px;
+    border-right: 2px solid rgba(79, 48, 23, 0.45);
+}
+
+/* ============================================================
+   TYPOGRAPHY
+============================================================ */
+
+#chapter-three-scrolly .step h2 {
+    text-align: right;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    line-height: 1.1;
+    color: #3c220c;
+}
+
+#chapter-three-scrolly .step p {
+    text-align: left;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    color: #3c220c;
+}
+
+/* ============================================================
+   RIGHT COLUMN — STICKY VISUALIZATION (FIXED)
+============================================================ */
+
+#chapter-three-scrolly figure {
+    grid-column: 2;
+    position: sticky;
+    top: 10vh;
+
+    height: 80vh;
+    max-height: 720px;
+    min-height: 520px;
+
+    width: 100%;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 1;
+    overflow: hidden;
+
+    /* space for source */
+    padding-bottom: 64px;
+    box-sizing: border-box;
+}
+
+/* ============================================================
+   CHART CONTAINER — SVG FILLS FIGURE
+============================================================ */
+
+#chapter-three-viz {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+}
+
+#chapter-three-viz svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ============================================================
+   FADE IN
+============================================================ */
+
+#chapter-three-scrolly figure {
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    will-change: opacity;
+}
+
+#chapter-three-scrolly figure.is-visible {
+    opacity: 1;
+}
+
+/* ============================================================
+   BAR LEGEND
+============================================================ */
+
+.bar-legend .legend-item {
+    opacity: 0;
+    transition: opacity 0.15s linear;
+}
+
+.bar-legend .legend-item.is-visible {
+    opacity: 1;
+}
+
+/* ============================================================
+   CHART SOURCE — ANCHORED, NO LAYOUT HACKS
+============================================================ */
+
+#chapter-three-source {
+    position: absolute;
+    left: 24px;
+    bottom: 20px;
+
+    font-size: 0.7rem;
+    line-height: 1.25;
+    color: rgba(0, 0, 0, 0.42);
+    max-width: 420px;
+
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+#chapter-three-source.chart-source--visible {
+    opacity: 1;
+}
+
+/* ============================================================
+   SMALL HEIGHT SAFEGUARD
+============================================================ */
+
+@media (max-height: 800px) {
+    #chapter-three-scrolly figure {
+        top: 16vh;
+        height: 75vh;
+        min-height: 580px;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE TYPOGRAPHY
+============================================================ */
+
+@media (max-height: 800px) {
+
+    .chapter-three-intro > p {
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    #chapter-three-scrolly .step h2 {
+        font-size: 1.3rem;
+        line-height: 1.2;
+    }
+
+    #chapter-three-scrolly .step p {
+        font-size: 0.92rem;
+        line-height: 1.55;
+    }
+
+    #chapter-three-scrolly .step {
+        min-height: 90vh;
+    }
+}

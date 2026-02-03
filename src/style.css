@@ -1,0 +1,241 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ============================================================
+   GLOBAL BASE STYLES
+============================================================ */
+
+body {
+    font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.5em;
+    background-color: #F5F5DD;
+    color: #01080D;
+}
+
+/* ============================================================
+   HEADINGS
+============================================================ */
+
+h1 {
+    font-size: 3em;
+    line-height: 1em;
+    font-weight: 100;
+    margin-bottom: 50px;
+}
+
+h1 strong,
+h2,
+h3 {
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* ============================================================
+   MAIN LAYOUT CONTAINER
+============================================================ */
+
+#scrolly {
+    width: 1100px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* ============================================================
+   ARTICLE — LEFT COLUMN
+============================================================ */
+
+article {
+    position: relative;
+    padding: 0;
+    z-index: 0;
+}
+
+/* ============================================================
+   INTRO & OUTRO SECTIONS (GENERIC)
+============================================================ */
+
+section.generic {
+    width: 500px;
+    margin: 0 auto;
+    background: none;
+}
+
+section#intro {
+    padding: 50px 0 0 0;
+}
+
+/* ============================================================
+   LANGUAGE BAR (TOP)
+============================================================ */
+
+#language {
+    background: #01080D;
+    padding: 5px 10px;
+    color: #F2E8DC;
+    font-size: 0.8em;
+}
+
+#language a {
+    color: #F2E8DC;
+}
+
+#language a.active {
+    opacity: 0.5;
+}
+
+/* ============================================================
+   GENERIC TEXT FORMATTING
+============================================================ */
+
+p strong {
+    font-weight: 700;
+}
+
+ul {
+    margin-bottom: 25px;
+}
+
+ul li {
+    list-style: disc;
+    padding-left: 15px;
+    margin-left: 15px;
+}
+
+p.seperator {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1em;
+    margin: 50px 0;
+    border-bottom: 2px solid #8C8274;
+}
+
+p span.label {
+    font-weight: 700;
+}
+
+/* ============================================================
+   TOOLTIP (GENERIC, NOT D3)
+============================================================ */
+
+.tooltip {
+    margin: 0 auto;
+    color: #01080D;
+    position: absolute;
+    bottom: -35px;
+    right: 20px;
+    width: 500px;
+    text-align: right;
+    font-size: 0.8em;
+    font-weight: 700;
+}
+
+/* ============================================================
+   AXIS STYLING (LEGACY)
+============================================================ */
+
+.axis path,
+.axis line {
+    color: #F2E8DC;
+    stroke: #F2E8DC;
+}
+
+.axis text {
+    fill: #F2E8DC;
+}
+
+/* ============================================================
+   FOOTER — BASE
+============================================================ */
+
+#footer {
+    width: 100%;
+    background-color: #01080D;
+    color: rgba(242, 232, 220, 0.85);
+
+    margin-top: 80px;
+    padding: 60px 0;
+
+    font-size: 0.75rem;
+    line-height: 1.45;
+}
+
+/* ============================================================
+   FOOTER — GENERAL TYPOGRAPHY SYSTEM
+============================================================ */
+
+/* Shared width and vertical rhythm */
+#footer p,
+#footer ul {
+    width: 500px;
+    margin: 0 auto 18px;
+}
+
+/* Section titles inside footer */
+#footer .footer-title {
+    display: block;
+    font-weight: 600;
+    color: rgba(242, 232, 220, 0.95);
+    margin-bottom: 6px;
+}
+
+/* Lists used in footer (image credits, etc.) */
+#footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+#footer li {
+    margin-bottom: 8px;
+}
+
+/* Emphasis (image titles, report names) */
+#footer em {
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Links */
+#footer a {
+    color: rgba(242, 232, 220, 0.95);
+    text-decoration: underline;
+    text-decoration-thickness: 0.75px;
+    text-underline-offset: 2px;
+}
+
+#footer a:hover {
+    opacity: 0.85;
+}
+
+/* ============================================================
+   FOOTER — FINAL CREDIT LINE
+============================================================ */
+
+#footer .footer-credit {
+    margin-top: 32px;
+    color: rgba(242, 232, 220, 0.6);
+}
+
+/* ============================================================
+   COLORS & LINKS (GLOBAL)
+============================================================ */
+
+.red { color: #A6055D; }
+.grey { color: #777; }
+.green { color: #00C184; }
+
+a {
+    font-weight: 700;
+    color: #F14F54;
+}
