@@ -181,6 +181,7 @@ export async function initChoropleth(target) {
         .selectAll("path")
         .data(geo.features)
         .join("path")
+        .attr("class", "country-path") // for the pointer
         .attr("d", path)
         .attr("display", (f) => {
             const iso3 = getIso3(f);

@@ -155,6 +155,12 @@ p span.label {
     fill: #F2E8DC;
 }
 
+/* Cursor changes on hoverable elements */
+.country-dot, .country-line, .country-path {
+    cursor: pointer;
+}
+
+
 /* ============================================================
    FOOTER — BASE
 ============================================================ */
