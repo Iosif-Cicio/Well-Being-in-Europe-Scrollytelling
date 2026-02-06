@@ -1,6 +1,6 @@
-/* ============================================================
-   CHAPTER TWO — TITLE PANEL
-============================================================ */
+/* =========================
+   CHAPTER TWO — PANEL
+========================= */
 
 #chapter-two-panel {
     position: relative;
@@ -36,23 +36,23 @@
     text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* ============================================================
-   CHAPTER TWO — CONTENT WRAPPER
-============================================================ */
+/* =========================
+   CHAPTER TWO — CONTENT
+========================= */
 
 #chapter-two-content {
     background: #f5f5dd;
     padding: 0 0 160px;
 }
 
-/* ============================================================
+/* =========================
    CHAPTER TWO — INTRO
-============================================================ */
+========================= */
 
 .chapter-two-intro {
     width: 100%;
     background: #ececd2;
-    padding: 64px 24px 64px;
+    padding: 64px 24px;
 }
 
 .chapter-two-intro > p {
@@ -64,9 +64,9 @@
     color: #202020;
 }
 
-/* ============================================================
-   CHAPTER TWO — SCROLLYTELLING LAYOUT
-============================================================ */
+/* =========================
+   CHAPTER TWO — SCROLL LAYOUT
+========================= */
 
 #chapter-two-scrolly {
     display: grid;
@@ -80,9 +80,9 @@
     position: relative;
 }
 
-/* ============================================================
+/* =========================
    LEFT COLUMN — STEPS
-============================================================ */
+========================= */
 
 #chapter-two-scrolly article {
     grid-column: 1;
@@ -110,10 +110,6 @@
     border-right: 2px solid rgba(79, 48, 23, 0.45);
 }
 
-/* ============================================================
-   TYPOGRAPHY
-============================================================ */
-
 #chapter-two-scrolly .step h2 {
     text-align: right;
     font-size: 1.6rem;
@@ -131,9 +127,9 @@
     color: #3c220c;
 }
 
-/* ============================================================
-   RIGHT COLUMN — STICKY VISUALIZATION (MATCH CHAPTER THREE)
-============================================================ */
+/* =========================
+   RIGHT COLUMN — CARD + CHART
+========================= */
 
 #chapter-two-scrolly figure {
     grid-column: 2;
@@ -150,34 +146,46 @@
     display: flex;
     flex-direction: column;
 
-    background: #f5f5dd;
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    border-radius: 12px;
+
+    /* small polish: a touch more bottom room so the source breathes */
+    padding: 18px 18px 18px;
+
     z-index: 1;
 
-    /* IMPORTANT: no clipping */
-    overflow: visible;
+    /* clip to rounded corners, so nothing escapes the card */
+    overflow: hidden;
     box-sizing: border-box;
 }
 
-/* ============================================================
-   CHART CONTAINER — FLEX-BASED (KEY FIX)
-============================================================ */
-
 #chapter-two-viz {
-    flex: 1;              /* ← critical */
+    flex: 1;
     width: 100%;
     display: block;
+
+    /* critical for flex: let the chart shrink correctly */
+    min-height: 0;
+
+    /* allow axis labels to render into the gutter */
     overflow: visible;
+
+    /* gutter space for x-axis title + far-right ticks */
+    padding: 8px 44px 56px 12px;
+    box-sizing: border-box;
 }
 
 #chapter-two-viz svg {
     width: 100%;
     height: 100%;
     display: block;
+    overflow: visible;
 }
 
-/* ============================================================
+/* =========================
    FADE-IN
-============================================================ */
+========================= */
 
 #chapter-two-scrolly figure {
     opacity: 0;
@@ -191,9 +199,9 @@
     transform: translateY(0);
 }
 
-/* ============================================================
-   SOURCE — PART OF LAYOUT (NO OVERLAY)
-============================================================ */
+/* =========================
+   SOURCE
+========================= */
 
 #chapter-two-source {
     position: relative;
@@ -202,7 +210,7 @@
     margin-left: 32px;
     margin-bottom: 8px;
 
-    max-width: 420px;
+    max-width: 600px;
 
     font-size: 0.7rem;
     line-height: 1.25;
@@ -210,80 +218,10 @@
 
     pointer-events: none;
     transition: opacity 300ms ease;
+
+    flex: 0 0 auto;
 }
 
 .chart-source--hidden {
     opacity: 0;
-}
-
-/* ============================================================
-   TABLET ADJUSTMENTS (≤1024px)
-============================================================ */
-
-@media (max-width: 1024px) {
-
-    #chapter-two-scrolly {
-        grid-template-columns: 340px minmax(520px, 1fr);
-        gap: 56px;
-        padding: 0 40px;
-    }
-
-    #chapter-two-scrolly .step {
-        min-height: 80vh;
-    }
-
-    #chapter-two-scrolly .step-content {
-        max-width: 320px;
-        padding-right: 22px;
-    }
-
-    #chapter-two-scrolly .step h2 {
-        font-size: 1.45rem;
-    }
-
-    #chapter-two-scrolly .step p {
-        font-size: 0.95rem;
-    }
-
-    #chapter-two-scrolly figure {
-        top: 8vh;
-        height: 72vh;
-    }
-
-    #chapter-two-source {
-        margin-left: 24px;
-        max-width: 360px;
-    }
-}
-
-/* ============================================================
-   SMALL HEIGHT SAFEGUARD
-============================================================ */
-
-@media (max-height: 800px) {
-
-    #chapter-two-scrolly figure {
-        top: 16vh;
-        height: 75vh;
-        min-height: 580px;
-    }
-
-    .chapter-two-intro > p {
-        font-size: 1.05rem;
-        line-height: 1.6;
-    }
-
-    #chapter-two-scrolly .step h2 {
-        font-size: 1.3rem;
-        line-height: 1.2;
-    }
-
-    #chapter-two-scrolly .step p {
-        font-size: 0.92rem;
-        line-height: 1.55;
-    }
-
-    #chapter-two-scrolly .step {
-        min-height: 75vh;
-    }
 }

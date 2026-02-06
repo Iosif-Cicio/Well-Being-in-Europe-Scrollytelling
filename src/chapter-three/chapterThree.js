@@ -31,6 +31,10 @@ export function initChapterThree() {
         return;
     }
 
+    // source is always visible
+    const source = document.getElementById("chapter-three-source");
+    if (source) source.classList.add("chart-source--visible");
+
     setupDimensions();
 
     initBarChart({
@@ -100,7 +104,7 @@ function handleResize() {
 }
 
 /* ============================================================
-   STEP HANDLER (SINGLE SOURCE OF TRUTH)
+   STEP HANDLER
 ============================================================ */
 
 function handleStepEnter(element) {
@@ -116,12 +120,7 @@ function handleStepEnter(element) {
             step.classList.toggle("is-active", step === element)
         );
 
-    // chart source visibility (final step only)
-    const source = document.getElementById("chapter-three-source");
-    if (!source) return;
-
-    const isOutro = stepKey === "chapter-three-outro";
-    source.classList.toggle("chart-source--visible", isOutro);
+    // source stays visible (no toggling anymore)
 }
 
 /* ============================================================

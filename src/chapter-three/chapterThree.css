@@ -133,7 +133,7 @@
 }
 
 /* ============================================================
-   RIGHT COLUMN — STICKY VISUALIZATION (FIXED)
+   RIGHT COLUMN — CARD + STICKY VISUALIZATION
 ============================================================ */
 
 #chapter-three-scrolly figure {
@@ -151,43 +151,59 @@
     display: flex;
     flex-direction: column;
 
-    z-index: 1;
-    overflow: hidden;
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    border-radius: 12px;
 
-    /* space for source */
-    padding-bottom: 64px;
+    padding: 18px 18px 18px;
+
+    z-index: 1;
+
+    /* clips to rounded corners */
+    overflow: hidden;
     box-sizing: border-box;
+
+    /* Fade out */
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+
+    transition: opacity 0.45s ease, transform 0.45s ease;
+    will-change: opacity, transform;
 }
 
 /* ============================================================
-   CHART CONTAINER — SVG FILLS FIGURE
+   CHART CONTAINER
 ============================================================ */
 
 #chapter-three-viz {
+    flex: 1;
     width: 100%;
-    height: 100%;
     display: block;
+
+    min-height: 0;
     overflow: visible;
+
+    /* gutter space for axis labels / legend inside the card */
+    padding: 8px 28px 32px 12px;
+    box-sizing: border-box;
 }
 
 #chapter-three-viz svg {
     width: 100%;
     height: 100%;
     display: block;
+    overflow: visible;
 }
 
 /* ============================================================
    FADE IN
 ============================================================ */
 
-#chapter-three-scrolly figure {
-    opacity: 0;
-    transition: opacity 0.45s ease;
-    will-change: opacity;
-}
-
 #chapter-three-scrolly figure.is-visible {
     opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 /* ============================================================
@@ -204,7 +220,7 @@
 }
 
 /* ============================================================
-   CHART SOURCE — ANCHORED, NO LAYOUT HACKS
+   CHART SOURCE
 ============================================================ */
 
 #chapter-three-source {

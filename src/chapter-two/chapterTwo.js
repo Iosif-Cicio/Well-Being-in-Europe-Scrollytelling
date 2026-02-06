@@ -55,14 +55,14 @@ export async function initChapterTwo() {
         height
     });
 
-    // start hidden (scatterplot logic unchanged)
+    // start hidden (fade-in behavior unchanged)
     if (!stickyFigure.empty()) {
         stickyFigure.classed("is-visible", false);
     }
 
-    /* source hidden by default */
+    // Source is ALWAYS visible now
     if (!sourceEl.empty()) {
-        sourceEl.classed("chart-source--hidden", true);
+        sourceEl.classed("chart-source--hidden", false);
     }
 
     setupScroller();
@@ -92,16 +92,12 @@ function setupScroller() {
         .onStepEnter(({ element }) => {
             const step = element.dataset.step;
 
-            // FADE IN when entering chapter from above (UNCHANGED)
+            // fade in on first entry
             if (!stickyFigure.empty() && !stickyFigure.classed("is-visible")) {
                 stickyFigure.classed("is-visible", true);
             }
 
             resetRegionHighlight();
-
-            if (!sourceEl.empty()) {
-                sourceEl.classed("chart-source--hidden", true);
-            }
 
             switch (step) {
                 case "gdp-western-highlight":
@@ -110,11 +106,6 @@ function setupScroller() {
 
                 case "gdp-outliers":
                     highlightRichButUnhappy();
-
-                    /* show source ONLY on last step */
-                    if (!sourceEl.empty()) {
-                        sourceEl.classed("chart-source--hidden", false);
-                    }
                     break;
 
                 default:
@@ -128,11 +119,6 @@ function setupScroller() {
                 if (!stickyFigure.empty()) {
                     stickyFigure.classed("is-visible", false);
                 }
-
-                if (!sourceEl.empty()) {
-                    sourceEl.classed("chart-source--hidden", true);
-                }
             }
         });
-
 }

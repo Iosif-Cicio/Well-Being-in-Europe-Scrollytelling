@@ -244,7 +244,7 @@ export function initTimeline({ container, years }) {
 
     infoGroup.append("circle")
         .attr("r", 10)
-        .attr("fill", "white")
+        .attr("fill", "#F5F5DD")
         .attr("stroke", "#1a1a1a")
         .attr("stroke-width", 1.5);
 
