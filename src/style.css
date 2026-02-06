@@ -76,24 +76,6 @@ section#intro {
     padding: 50px 0 0 0;
 }
 
-/* ============================================================
-   LANGUAGE BAR (TOP)
-============================================================ */
-
-#language {
-    background: #01080D;
-    padding: 5px 10px;
-    color: #F2E8DC;
-    font-size: 0.8em;
-}
-
-#language a {
-    color: #F2E8DC;
-}
-
-#language a.active {
-    opacity: 0.5;
-}
 
 /* ============================================================
    GENERIC TEXT FORMATTING
@@ -126,6 +108,46 @@ p span.label {
 }
 
 /* ============================================================
+   EDITORIAL LEDE BLOCK (for chapter intro text)
+============================================================ */
+
+.lede {
+    width: 700px;
+    margin: 56px auto 46px;
+    padding: 22px 22px 18px;
+
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    border-left: 4px solid rgba(0, 0, 0, 0.18);
+}
+
+.lede p {
+    margin-bottom: 14px;
+    font-size: 1.08rem;
+    line-height: 1.8;
+    font-weight: 300;
+    color: #202020;
+}
+
+/* first paragraph feels like a “lede” */
+.lede p:first-child {
+    font-size: 1.15rem;
+    font-weight: 400;
+}
+
+.lede p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 700px) {
+    .lede {
+        width: min(520px, 92%);
+        padding: 18px 18px 16px;
+        margin: 42px auto 36px;
+    }
+}
+
+/* ============================================================
    TOOLTIP (GENERIC, NOT D3)
 ============================================================ */
 
@@ -142,7 +164,7 @@ p span.label {
 }
 
 /* ============================================================
-   AXIS STYLING (LEGACY)
+   AXIS STYLING (Old)
 ============================================================ */
 
 .axis path,
@@ -154,8 +176,6 @@ p span.label {
 .axis text {
     fill: #F2E8DC;
 }
-
-/* Cursor changes on hoverable elements */
 .country-dot, .country-line, .country-path {
     cursor: pointer;
 }
@@ -233,15 +253,4 @@ p span.label {
     color: rgba(242, 232, 220, 0.6);
 }
 
-/* ============================================================
-   COLORS & LINKS (GLOBAL)
-============================================================ */
 
-.red { color: #A6055D; }
-.grey { color: #777; }
-.green { color: #00C184; }
-
-a {
-    font-weight: 700;
-    color: #F14F54;
-}

@@ -51,21 +51,42 @@
 }
 
 /* ============================================================
-   CHAPTER ONE — INTRO PANEL
+   CHAPTER ONE — INTRO PANEL (EDITORIAL LEDE)
 ============================================================ */
 
 .chapter-one-intro {
-    background: #ececd2;
-    padding: 64px 24px 64px;
+    /* instead of a big flat slab, make it breathe like editorial */
+    background: transparent;
+    padding: 56px 24px 46px;
 }
 
-.chapter-one-intro > p {
-    max-width: 720px;
-    margin: 0 auto 2.4rem;
-    font-size: 1.25rem;
+.chapter-one-intro-inner {
+    max-width: 760px;
+    margin: 0 auto;
+
+    padding: 22px 22px 18px;
+    background: rgba(255, 255, 255, 0.18);
+
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    border-left: 4px solid rgba(0, 0, 0, 0.18);
+}
+
+.chapter-one-intro-inner > p {
+    margin: 0 0 14px;
+    font-size: 1.1rem;
     line-height: 1.8;
-    font-weight: 400;
+    font-weight: 300;
     color: #202020;
+}
+
+/* Give the first paragraph a “lede” feel */
+.chapter-one-intro-inner > p:first-child {
+    font-size: 1.18rem;
+    font-weight: 400;
+}
+
+.chapter-one-intro-inner > p:last-child {
+    margin-bottom: 0;
 }
 
 /* ============================================================
@@ -98,8 +119,6 @@
     position: relative;
     z-index: 2;
 
-    /* 🔑 KEY FIX:
-       Let pointer events pass through the step column */
     pointer-events: none;
 }
 
@@ -107,8 +126,6 @@
     min-height: 120vh;
     display: flex;
     align-items: center;
-
-    /* Also transparent to pointer events */
     pointer-events: none;
 }
 
@@ -116,7 +133,6 @@
    MAP STEP CONTENT — SURFACE PANEL
 ============================================================ */
 
-/* Re-enable interaction ONLY on the visible card */
 .map-step .map-step-content {
     pointer-events: auto;
 
@@ -137,14 +153,12 @@
             transform 0.35s ease;
 }
 
-/* Active step */
 .map-step.is-active .map-step-content {
     background: rgba(245, 245, 221, 0.96);
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
     transform: translateY(-2px);
 }
 
-/* Paragraph spacing */
 .map-step-content p {
     margin-bottom: 1.2rem;
 }
@@ -305,5 +319,13 @@
     #map-sticky-wrapper .chart-source {
         bottom: 24px;
         max-width: 420px;
+    }
+
+    .chapter-one-intro {
+        padding: 44px 18px 36px;
+    }
+
+    .chapter-one-intro-inner {
+        padding: 18px 18px 16px;
     }
 }

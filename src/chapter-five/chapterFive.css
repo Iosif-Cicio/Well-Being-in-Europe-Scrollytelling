@@ -37,7 +37,7 @@
 
 
 /* ============================================================
-   CHAPTER FIVE — CONTENT (HERO-STYLE)
+   CHAPTER FIVE — CONTENT
 ============================================================ */
 
 #chapter-five-content {
@@ -65,10 +65,6 @@
     max-width: 560px;
 }
 
-.chapter-five-text p:first-child {
-    font-size: 1.45rem;
-    font-weight: 500;
-}
 
 /* Image column */
 
