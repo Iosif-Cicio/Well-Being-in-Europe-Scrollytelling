@@ -15,6 +15,9 @@ let leaderLineLayer;
 
 let activeHighlight = "none";
 let activeRegion = null;
+let isHovering = false;
+
+const HOVER_RADIUS = 12;
 
 /* ============================================================
    NARRATIVE COUNTRY GROUPS
@@ -30,6 +33,8 @@ const RICH_AND_HAPPY = [
     "Switzerland"
 ];
 
+// High-income peer group with divergent well-being outcomes
+// was before rich but unhappy, but shifted from identifying outliers
 const SIMILAR_INCOME_DIFFERENT_WELLBEING = [
     "Germany",
     "Belgium",
@@ -53,15 +58,14 @@ const isSmallScreen = window.innerHeight < 800;
 
 /* ============================================================
    INIT
+   SVG CONTAINER, SCALES, AXES, DOTS
 ============================================================ */
 
 export function initScatterplot({ container, data, width: w, height: h }) {
-    margin = {
-        top: 64,
+    margin = { top: 64,
         right: 148,
         bottom: isSmallScreen ? 80 : 40,
-        left: 64
-    };
+        left: 64 };
 
     width = w - margin.left - margin.right;
     height = h - margin.top - margin.bottom;
@@ -89,11 +93,13 @@ export function initScatterplot({ container, data, width: w, height: h }) {
 ============================================================ */
 
 function setupScales() {
-    xScale = d3.scaleLinear()
+    xScale = d3
+        .scaleLinear()
         .domain([20000, 160000])
         .range([0, width]);
 
-    yScale = d3.scaleLinear()
+    yScale = d3
+        .scaleLinear()
         .domain([5.0, 8.0])
         .range([height, 0]);
 }
@@ -146,11 +152,58 @@ function drawDots(data) {
         .attr("class", "country-dot")
         .attr("cx", d => xScale(d.gdpPPP_avg))
         .attr("cy", d => yScale(d.life))
-        .attr("r", 4.5)
-        .attr("fill", "#4f8a8b")
+        .attr("r", 5.5)
+        .attr("fill", "#2c7fb8")
         .attr("opacity", 0.95)
-        .on("mouseenter", handleMouseEnter)
-        .on("mouseleave", handleMouseLeave);
+        .style("pointer-events", "none");
+
+    // Voronoi interaction layer
+    setupVoronoiInteraction(data);
+}
+
+function setupVoronoiInteraction(data) {
+    // Voronoi diagram for smart hit detection
+    const delaunay = d3.Delaunay.from(
+        data,
+        d => xScale(d.gdpPPP_avg),
+        d => yScale(d.life)
+    );
+    const voronoi = delaunay.voronoi([0, 0, width, height]);
+
+    // Invisible Voronoi cells for hit detection
+    g.selectAll("path.voronoi-cell")
+        .data(data)
+        .join("path")
+        .attr("class", "voronoi-cell")
+        .attr("d", (d, i) => voronoi.renderCell(i))
+        .attr("fill", "none")
+        .attr("stroke", "none")
+        .attr("pointer-events", "all")
+        .style("cursor", "pointer")
+        .on("mousemove", function (event, d) {
+            const [mx, my] = d3.pointer(event, g.node());
+
+            const dx = xScale(d.gdpPPP_avg) - mx;
+            const dy = yScale(d.life) - my;
+
+            const isClose = (dx * dx + dy * dy) <= (HOVER_RADIUS * HOVER_RADIUS);
+
+            if (isClose && !isHovering) {
+                isHovering = true;
+                handleMouseEnter(event, d);
+            }
+
+            if (!isClose && isHovering) {
+                isHovering = false;
+                handleMouseLeave(event, d);
+            }
+        })
+        .on("mouseleave", function (event, d) {
+            if (isHovering) {
+                isHovering = false;
+                handleMouseLeave(event, d);
+            }
+        });
 }
 
 /* ============================================================
@@ -286,7 +339,7 @@ export function highlightRichAndHappy() {
         .attr("opacity", d => RICH_AND_HAPPY.includes(d.country) ? 1 : 0.2)
         .attr("r", d => RICH_AND_HAPPY.includes(d.country) ? 6 : 4.5)
         .attr("stroke", d => RICH_AND_HAPPY.includes(d.country) ? "#222" : "none")
-        .attr("stroke-width", 0.8);
+        .attr("stroke-width", 1,2);
 
     clearInlineLabels();
     showInlineLabels(RICH_AND_HAPPY);
@@ -321,7 +374,19 @@ function setupHoverLayer() {
 }
 
 function handleMouseEnter(event, d) {
-    d3.select(event.currentTarget).attr("r", 7);
+    // Find and highlight the corresponding visual dot
+    const visualDot = g.selectAll(".country-dot")
+        .filter(dotData => dotData.country === d.country);
+
+    visualDot
+        .raise() // Bring to front
+        .transition()
+        .duration(100)
+        .attr("r", 7)
+        .attr("stroke", "#fff")
+        .attr("stroke-width", 2);
+
+    hoverLayer.raise(); // keep tooltip above raised dot
 
     const cx = xScale(d.gdpPPP_avg);
     const cy = yScale(d.life);
@@ -338,6 +403,18 @@ function handleMouseEnter(event, d) {
     const labelGroup = hoverGroup.append("g")
         .attr("transform", `translate(${cx + 22},${cy - 22})`);
 
+    // White background rect to cover any dots behind - larger and fully opaque
+    labelGroup.append("rect")
+        .attr("x", -4)
+        .attr("y", -22)
+        .attr("rx", 8)
+        .attr("ry", 8)
+        .attr("width", 208)
+        .attr("height", 66)
+        .attr("fill", "#fff")
+        .attr("opacity", 1);
+
+    // Visible tooltip rect
     labelGroup.append("rect")
         .attr("x", 0)
         .attr("y", -18)
@@ -346,7 +423,8 @@ function handleMouseEnter(event, d) {
         .attr("width", 200)
         .attr("height", 58)
         .attr("fill", "#f6f4e8")
-        .attr("stroke", "rgba(0,0,0,0.15)");
+        .attr("stroke", "rgba(0,0,0,0.15)")
+        .attr("stroke-width", 0.5);
 
     labelGroup.append("image")
         .attr("x", 12)
@@ -372,25 +450,45 @@ function handleMouseEnter(event, d) {
 }
 
 function handleMouseLeave(event, d) {
-    const circle = d3.select(event.currentTarget);
+    // Reset the visual dot
+    const visualDot = g.selectAll(".country-dot")
+        .filter(dotData => dotData.country === d.country);
 
     if (activeHighlight === "rich-unhappy") {
         const isMatch = SIMILAR_INCOME_DIFFERENT_WELLBEING.includes(d.country);
-        circle.attr("opacity", isMatch ? 1 : 0.12)
-            .attr("r", isMatch ? 7 : 4.5);
+        visualDot
+            .transition()
+            .duration(200)
+            .attr("opacity", isMatch ? 1 : 0.12)
+            .attr("r", isMatch ? 7 : 4.5)
+            .attr("stroke", isMatch ? "#111" : "none")
+            .attr("stroke-width", 1.2);
 
     } else if (activeHighlight === "rich-happy") {
         const isMatch = RICH_AND_HAPPY.includes(d.country);
-        circle.attr("opacity", isMatch ? 1 : 0.2)
-            .attr("r", isMatch ? 6 : 4.5);
+        visualDot
+            .transition()
+            .duration(200)
+            .attr("opacity", isMatch ? 1 : 0.2)
+            .attr("r", isMatch ? 6 : 4.5)
+            .attr("stroke", isMatch ? "#222" : "none")
+            .attr("stroke-width", 1.2);
 
     } else if (activeHighlight === "region") {
-        circle.attr("opacity", d.region === activeRegion ? 1 : 0.15)
-            .attr("r", 4.5);
+        visualDot
+            .transition()
+            .duration(200)
+            .attr("opacity", d.region === activeRegion ? 1 : 0.15)
+            .attr("r", 4.5)
+            .attr("stroke", "none");
 
     } else {
-        circle.attr("opacity", 0.95)
-            .attr("r", 4.5);
+        visualDot
+            .transition()
+            .duration(200)
+            .attr("opacity", 0.95)
+            .attr("r", 4.5)
+            .attr("stroke", "none");
     }
 
     hoverGroup.style("opacity", 0);

@@ -13,6 +13,9 @@ const regions = [
     ["FRA", "GBR", "BEL"],                               // Step 4 — Outliers
 ];
 
+
+const darkYlGnBu = (t) => d3.interpolateYlGnBu(0.35 + t * 0.65);
+
 function getIso3(feature) {
     const p = feature?.properties || {};
     return (
@@ -66,7 +69,7 @@ function hideTooltip() {
 }
 
 /* ============================================================
-   LEGEND (matches map domain; explains 0–10 scale)
+   LEGEND
 ============================================================ */
 
 function ensureLegend({ min, max }) {
@@ -89,13 +92,12 @@ function ensureLegend({ min, max }) {
             </div>
         `);
 
-    // smoother gradient, same palette
-    const stopsT = [0, 0.10, 0.15, 0.20, 0.25, 0.40, 0.55, 0.70, 0.80, 1];
-    const stops = stopsT.map((t) => d3.interpolateYlGnBu(t)).join(",");
+    const stopsT = [0, 0.15, 0.30, 0.45, 0.60, 0.75, 0.90, 1];
+    const stops = stopsT.map(t => darkYlGnBu(t)).join(",");
 
     legendEl
         .select(".map-legend-bar")
-        .style("background", `linear-gradient(to right,${stops})`);
+        .style("background", `linear-gradient(to right, ${stops})`);
 
     setLegendVisible(false);
 }
@@ -156,15 +158,14 @@ export async function initChoropleth(target) {
     const projection = d3.geoMercator().fitSize([width, height], geo);
     path = d3.geoPath().projection(projection);
 
-    // KEEP map coloring exactly as you had it: relative to observed min/max
+    // Relative scale: observed European min to max
     const extent = d3.extent(clean, (d) => d.score);
 
     const color = d3
         .scaleSequential()
         .domain(extent)
-        .interpolator(d3.interpolateYlGnBu);
+        .interpolator(darkYlGnBu);
 
-    // Legend now matches the SAME domain as the map
     ensureLegend({ min: extent[0], max: extent[1] });
 
     /* ============================================================
@@ -188,7 +189,7 @@ export async function initChoropleth(target) {
         })
         .attr("stroke", "#333")
         .attr("stroke-width", 0.6)
-        .attr("opacity", 0.9)
+        .attr("opacity", 0.95)
         .on("mousemove", (event, f) => {
             const iso3 = getIso3(f);
             const name = getCountryName(f);
@@ -232,7 +233,7 @@ export function updateChoropleth(stepIndex) {
             .interrupt()
             .transition()
             .duration(450)
-            .attr("opacity", 0.9)
+            .attr("opacity", 0.95)
             .attr("stroke-width", 0.6);
         return;
     }

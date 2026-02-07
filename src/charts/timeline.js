@@ -210,7 +210,7 @@ export function initTimeline({ container, years }) {
     line = d3.line()
         .x(d => xScale(d.year))
         .y(d => yScale(d.life))
-        .curve(d3.curveLinear);
+        .curve(d3.curveLinear); //timeline fix, so the shape of the paths doesn't change as it grows (otherwise d3.curveMonotoneX would cause the lines to shift)
 
     /* ======================
        TOOLTIP DIVS
@@ -221,7 +221,7 @@ export function initTimeline({ container, years }) {
         .data([null])
         .join("div")
         .attr("class", "timeline-tooltip")
-        .style("position", "fixed")          // <- fixed so it won't drift on scroll
+        .style("position", "fixed")          // fixed so it won't drift on scroll
         .style("pointer-events", "none")
         .style("opacity", 0);
 
@@ -230,12 +230,12 @@ export function initTimeline({ container, years }) {
         .data([null])
         .join("div")
         .attr("class", "timeline-country-tooltip")
-        .style("position", "fixed")          // <- fixed so it won't drift on scroll
+        .style("position", "fixed")          // fixed so it won't drift on scroll
         .style("pointer-events", "none")
         .style("opacity", 0);
 
     /* ======================
-       2013 INFO ICON (UNCHANGED SEMANTICS)
+       2013 INFO ICON
     ====================== */
 
     const infoGroup = g.append("g")
@@ -276,7 +276,7 @@ export function initTimeline({ container, years }) {
                 `);
         })
         .on("mousemove", (event) => {
-            // fixed positioning => clientX/clientY
+            // fixed positioning
             infoTooltip
                 .style("left", event.clientX + 12 + "px")
                 .style("top", event.clientY - 24 + "px");
@@ -287,7 +287,7 @@ export function initTimeline({ container, years }) {
 }
 
 /* ============================================================
-   UPDATE — CONTINUOUS SCROLL
+   CONTINUOUS SCROLL
 ============================================================ */
 
 export function updateTimelineProgress(data, progress) {
@@ -376,8 +376,6 @@ export function updateTimelineProgress(data, progress) {
         .on("click", (event, country) => {
             event.stopPropagation();
 
-            // If narrative focus exists (LOSERS/WINNERS), do NOT destroy it.
-            // Only set keyboard anchor inside the allowed set.
             if (lockedCountries.size) {
                 if (!lockedCountries.has(country)) return;
 
@@ -398,7 +396,7 @@ export function updateTimelineProgress(data, progress) {
                 return;
             }
 
-            // Otherwise: create click-based exclusive focus
+            // Otherwise create click-based exclusive focus
             lockedCountries.clear();
             lockedCountries.add(country);
             lockMode = "click";
@@ -437,7 +435,7 @@ export function updateTimelineProgress(data, progress) {
     paths.exit().remove();
 
     /* ======================
-       DOTS — LOCKED COUNTRIES
+       DOTS — LOCKED-IN COUNTRIES
     ====================== */
 
     const dotData = [];
