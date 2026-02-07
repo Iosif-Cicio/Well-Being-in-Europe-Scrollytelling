@@ -21,7 +21,7 @@ const MISSING_YEAR = 2013;
 const lockedCountries = new Set();
 
 // distinguish narrative locks vs click lock so svg click doesn't wipe narrative
-let lockMode = "none"; // "none" | "narrative" | "click"
+let lockMode = "none";
 
 // keyboard cursor state (single anchor)
 let keyboardFocus = null; // { country, year }
@@ -97,7 +97,6 @@ function renderKeyboardFocus(byCountry) {
     }
 
     // only allow keyboard focus if the country is currently focus-eligible:
-    // - if there are lockedCountries, must be inside them
     if (lockedCountries.size && !lockedCountries.has(keyboardFocus.country)) {
         tooltip.style("opacity", 0);
         return;
@@ -106,7 +105,6 @@ function renderKeyboardFocus(byCountry) {
     const series = byCountry.get(keyboardFocus.country);
     if (!series) return;
 
-    // never fabricate 2013: if year is 2013, hide (chapterFour skips it anyway)
     const point = series.find(d => d.year === keyboardFocus.year);
     if (!point) {
         tooltip.style("opacity", 0);
@@ -531,7 +529,7 @@ export function setKeyboardFocus(country, year, data, progress) {
 }
 
 /* ============================================================
-   CLICK FOCUS API (NEW)
+   CLICK FOCUS
    - lets ChapterFour move the exclusive click-focus with ↑/↓
 ============================================================ */
 
