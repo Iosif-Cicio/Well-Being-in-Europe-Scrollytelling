@@ -210,7 +210,7 @@ export function initTimeline({ container, years }) {
     line = d3.line()
         .x(d => xScale(d.year))
         .y(d => yScale(d.life))
-        .curve(d3.curveMonotoneX);
+        .curve(d3.curveLinear);
 
     /* ======================
        TOOLTIP DIVS
