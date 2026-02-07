@@ -254,8 +254,8 @@
 
 .map-legend-bar {
     height: 12px;
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+
 }
 
 .map-legend-ticks {

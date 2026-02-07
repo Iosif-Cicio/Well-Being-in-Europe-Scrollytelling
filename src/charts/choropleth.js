@@ -9,7 +9,7 @@ let euAverage = null;
 const regions = [
     ["FIN", "SWE", "DNK", "NOR", "ISL"],                 // Step 1 — Northern
     ["ESP", "ITA", "PRT", "GRC"],                        // Step 2 — Southern
-    ["POL", "CZE", "SVK", "LTU", "LVA", "EST"],           // Step 3 — Central/Eastern
+    ["POL", "CZE", "SVK", "LTU", "LVA", "EST"],          // Step 3 — Central/Eastern
     ["FRA", "GBR", "BEL"],                               // Step 4 — Outliers
 ];
 
@@ -66,7 +66,7 @@ function hideTooltip() {
 }
 
 /* ============================================================
-   LEGEND
+   LEGEND (matches map domain; explains 0–10 scale)
 ============================================================ */
 
 function ensureLegend({ min, max }) {
@@ -79,7 +79,8 @@ function ensureLegend({ min, max }) {
         .html(`
             <div class="map-legend-title">Life evaluation (Cantril Ladder)</div>
             <div class="map-legend-sub">
-                0 = worst possible life · 10 = best possible life
+                Scale: 0 = worst possible life · 10 = best possible life<br/>
+                Observed in Europe: <strong>${min.toFixed(1)}–${max.toFixed(1)}</strong>
             </div>
             <div class="map-legend-bar"></div>
             <div class="map-legend-ticks">
@@ -88,18 +89,13 @@ function ensureLegend({ min, max }) {
             </div>
         `);
 
+    // smoother gradient, same palette
+    const stopsT = [0, 0.10, 0.15, 0.20, 0.25, 0.40, 0.55, 0.70, 0.80, 1];
+    const stops = stopsT.map((t) => d3.interpolateYlGnBu(t)).join(",");
+
     legendEl
         .select(".map-legend-bar")
-        .style(
-            "background",
-            "linear-gradient(to right," +
-            d3.interpolateYlGnBu(0) + "," +
-            d3.interpolateYlGnBu(0.25) + "," +
-            d3.interpolateYlGnBu(0.5) + "," +
-            d3.interpolateYlGnBu(0.75) + "," +
-            d3.interpolateYlGnBu(1) +
-            ")"
-        );
+        .style("background", `linear-gradient(to right,${stops})`);
 
     setLegendVisible(false);
 }
@@ -146,19 +142,13 @@ export async function initChoropleth(target) {
        DATA CLEANING
     ============================================================ */
 
-    const clean = rows.filter(
-        (d) =>
-            d.iso3 &&
-            !Number.isNaN(d.score)
-    );
+    const clean = rows.filter((d) => d.iso3 && !Number.isNaN(d.score));
 
     dataByIso3 = new Map(clean.map((d) => [d.iso3, d]));
 
     euAverage = d3.mean(clean, (d) => d.score);
 
-    const ranked = [...clean].sort((a, b) =>
-        d3.descending(a.score, b.score)
-    );
+    const ranked = [...clean].sort((a, b) => d3.descending(a.score, b.score));
 
     rankByIso3 = new Map();
     ranked.forEach((d, i) => rankByIso3.set(d.iso3, i + 1));
@@ -166,12 +156,16 @@ export async function initChoropleth(target) {
     const projection = d3.geoMercator().fitSize([width, height], geo);
     path = d3.geoPath().projection(projection);
 
+    // KEEP map coloring exactly as you had it: relative to observed min/max
+    const extent = d3.extent(clean, (d) => d.score);
+
     const color = d3
         .scaleSequential()
-        .domain(d3.extent(clean, (d) => d.score))
+        .domain(extent)
         .interpolator(d3.interpolateYlGnBu);
 
-    ensureLegend({ min: 0, max: 10 });
+    // Legend now matches the SAME domain as the map
+    ensureLegend({ min: extent[0], max: extent[1] });
 
     /* ============================================================
        DRAW MAP
@@ -181,11 +175,11 @@ export async function initChoropleth(target) {
         .selectAll("path")
         .data(geo.features)
         .join("path")
-        .attr("class", "country-path") // for the pointer
+        .attr("class", "country-path")
         .attr("d", path)
         .attr("display", (f) => {
             const iso3 = getIso3(f);
-            return iso3 === "ISR" ? "none" : null; //invis Israel, cuz it just floats there
+            return iso3 === "ISR" ? "none" : null;
         })
         .attr("fill", (f) => {
             const iso3 = getIso3(f);
@@ -201,11 +195,7 @@ export async function initChoropleth(target) {
             const entry = iso3 ? dataByIso3.get(iso3) : null;
 
             if (!entry) {
-                showTooltip(
-                    `<strong>${name}</strong>`,
-                    event.clientX,
-                    event.clientY
-                );
+                showTooltip(`<strong>${name}</strong>`, event.clientX, event.clientY);
                 return;
             }
 
@@ -213,8 +203,7 @@ export async function initChoropleth(target) {
             const total = rankByIso3.size;
 
             const delta = entry.score - euAverage;
-            const deltaStr =
-                (delta >= 0 ? "+" : "") + delta.toFixed(2);
+            const deltaStr = (delta >= 0 ? "+" : "") + delta.toFixed(2);
 
             showTooltip(
                 `<strong>${entry.country || name}</strong><br/>
