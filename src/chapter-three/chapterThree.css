@@ -184,8 +184,7 @@
     min-height: 0;
     overflow: visible;
 
-    /* gutter space for axis labels / legend inside the card */
-    padding: 8px 28px 32px 12px;
+    padding: 8px 28px 16px 12px;
     box-sizing: border-box;
 }
 
@@ -277,4 +276,68 @@
     #chapter-three-scrolly .step {
         min-height: 90vh;
     }
+}
+
+/* ============================================================
+   CHAPTER THREE — HEADING to BAR color association
+============================================================ */
+
+#chapter-three-scrolly .step h2 {
+    transition: color 0.25s ease;
+}
+
+/* ======================
+   GDP
+====================== */
+#chapter-three-scrolly .step[data-step="gdp-bars-intro"] h2,
+#chapter-three-scrolly .step[data-step="gdp-bars-fill"] h2 {
+    color: #2c7fb8;
+}
+
+/* ======================
+   SOCIAL SUPPORT
+====================== */
+#chapter-three-scrolly .step[data-step="social-support"] h2,
+#chapter-three-scrolly .step[data-step="social-support-highlight"] h2 {
+    color: #41b6c4;
+}
+
+/* ======================
+   HEALTH
+====================== */
+#chapter-three-scrolly .step[data-step="health"] h2,
+#chapter-three-scrolly .step[data-step="health-highlight"] h2 {
+    color: #a1dab4;
+}
+
+/* ======================
+   FREEDOM
+====================== */
+#chapter-three-scrolly .step[data-step="freedom"] h2,
+#chapter-three-scrolly .step[data-step="freedom-highlight"] h2 {
+    color: #feb24c;
+}
+
+/* ======================
+   TRUST
+====================== */
+#chapter-three-scrolly .step[data-step="trust"] h2,
+#chapter-three-scrolly .step[data-step="trust-highlight"] h2 {
+    color: #fd8d3c;
+}
+
+/* ======================
+   GENEROSITY
+====================== */
+#chapter-three-scrolly .step[data-step="generosity"] h2,
+#chapter-three-scrolly .step[data-step="generosity-highlight"] h2 {
+    color: #f03b20;
+}
+
+/* ======================
+   DYSTOPIA + RESIDUAL
+====================== */
+#chapter-three-scrolly .step[data-step="dystopia-intro"] h2,
+#chapter-three-scrolly .step[data-step="dystopia-sort"] h2 {
+    color: #756bb1;
 }

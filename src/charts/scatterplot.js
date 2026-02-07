@@ -11,6 +11,7 @@ let width, height, margin;
 let hoverLayer;
 let hoverGroup;
 let labelLayer;
+let leaderLineLayer;
 
 let activeHighlight = "none";
 let activeRegion = null;
@@ -29,8 +30,6 @@ const RICH_AND_HAPPY = [
     "Switzerland"
 ];
 
-// High-income peer group with divergent well-being outcomes
-// was before rich but unhappy, but shifted from identifying outliers
 const SIMILAR_INCOME_DIFFERENT_WELLBEING = [
     "Germany",
     "Belgium",
@@ -39,18 +38,31 @@ const SIMILAR_INCOME_DIFFERENT_WELLBEING = [
     "Finland"
 ];
 
+/* ============================================================
+   INLINE LABEL OFFSETS (collision-safe, explicit)
+============================================================ */
+
+const LABEL_OFFSETS = {
+    Denmark: { dx: 14, dy: -20 },
+    Iceland: { dx: 12, dy: -5 },
+    Austria: { dx: 14, dy: -5 },
+    Germany: { dx: 15, dy: 7 }
+};
+
 const isSmallScreen = window.innerHeight < 800;
 
 /* ============================================================
    INIT
-   SVG CONTAINER, SCALES, AXES, DOTS
 ============================================================ */
 
 export function initScatterplot({ container, data, width: w, height: h }) {
-    margin = { top: 64,
+    margin = {
+        top: 64,
         right: 148,
         bottom: isSmallScreen ? 80 : 40,
-        left: 64 };
+        left: 64
+    };
+
     width = w - margin.left - margin.right;
     height = h - margin.top - margin.bottom;
 
@@ -142,10 +154,16 @@ function drawDots(data) {
 }
 
 /* ============================================================
-   INLINE LABELS
+   INLINE LABELS + LEADER LINES
 ============================================================ */
 
+const LABEL_DOT_RADIUS = 6;
+
 function setupInlineLabels() {
+    leaderLineLayer = g.append("g")
+        .attr("class", "inline-leader-lines")
+        .style("pointer-events", "none");
+
     labelLayer = g.append("g")
         .attr("class", "inline-label-layer")
         .style("pointer-events", "none");
@@ -156,11 +174,53 @@ function showInlineLabels(countries) {
         .filter(d => countries.includes(d.country))
         .data();
 
-    labelLayer.selectAll("text")
+    /* ---------- LEADER LINES ---------- */
+
+    leaderLineLayer
+        .selectAll("line")
+        .data(data.filter(d => LABEL_OFFSETS[d.country]), d => d.country)
+        .join("line")
+        .attr("x1", d => {
+            const o = LABEL_OFFSETS[d.country];
+            const angle = Math.atan2(o.dy, o.dx);
+            return xScale(d.gdpPPP_avg) + Math.cos(angle) * LABEL_DOT_RADIUS;
+        })
+        .attr("y1", d => {
+            const o = LABEL_OFFSETS[d.country];
+            const angle = Math.atan2(o.dy, o.dx);
+            return yScale(d.life) + Math.sin(angle) * LABEL_DOT_RADIUS;
+        })
+        .attr("x2", d => {
+            const o = LABEL_OFFSETS[d.country];
+            return xScale(d.gdpPPP_avg) + o.dx - 2;
+        })
+        .attr("y2", d => {
+            const o = LABEL_OFFSETS[d.country];
+            return yScale(d.life) + o.dy + 1;
+        })
+        .attr("stroke", "#666")
+        .attr("stroke-width", 0.9)
+        .attr("stroke-linecap", "round")
+        .attr("opacity", 0)
+        .transition()
+        .duration(300)
+        .attr("opacity", 0.9);
+
+    /* ---------- LABELS ---------- */
+
+    labelLayer
+        .selectAll("text")
         .data(data, d => d.country)
         .join("text")
-        .attr("x", d => xScale(d.gdpPPP_avg) + 8)
-        .attr("y", d => yScale(d.life) - 6)
+        .attr("x", d => {
+            const o = LABEL_OFFSETS[d.country];
+            return xScale(d.gdpPPP_avg) + (o ? o.dx : 8);
+        })
+        .attr("y", d => {
+            const o = LABEL_OFFSETS[d.country];
+            return yScale(d.life) + (o ? o.dy : -6);
+        })
+        .attr("dominant-baseline", "middle") // vertical centering for the lines
         .text(d => d.country)
         .attr("font-size", "11px")
         .attr("font-weight", 500)
@@ -177,10 +237,16 @@ function clearInlineLabels() {
         .duration(200)
         .attr("opacity", 0)
         .remove();
+
+    leaderLineLayer.selectAll("line")
+        .transition()
+        .duration(200)
+        .attr("opacity", 0)
+        .remove();
 }
 
 /* ============================================================
-   REGION & PATTERN HIGHLIGHTS (UNCHANGED)
+   REGION & PATTERN HIGHLIGHTS
 ============================================================ */
 
 export function highlightRegion(regionName) {
@@ -300,7 +366,7 @@ function handleMouseEnter(event, d) {
         .attr("x", 42)
         .attr("y", 20)
         .attr("font-size", "11px")
-        .text(`GDP: ${Math.round(d.gdpPPP_avg / 1000)}k · Life: ${d.life.toFixed(2)}`); // tooltip numbers rounded
+        .text(`GDP: ${Math.round(d.gdpPPP_avg / 1000)}k · Life: ${d.life.toFixed(2)}`);
 
     hoverGroup.style("opacity", 1);
 }

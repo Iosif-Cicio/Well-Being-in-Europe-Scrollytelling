@@ -183,6 +183,12 @@
     overflow: visible;
 }
 
+/* INLINE LEADER LINE POLISH */
+.inline-leader-lines line {
+    stroke-linecap: round;
+    stroke-dasharray: 1.5, 2;
+}
+
 /* =========================
    FADE-IN
 ========================= */
@@ -204,22 +210,18 @@
 ========================= */
 
 #chapter-two-source {
-    position: relative;
+    position: absolute;
+    left: 24px;
+    bottom: 20px;
 
-    margin-top: 8px;
-    margin-left: 32px;
-    margin-bottom: 8px;
-
-    max-width: 600px;
+    max-width: 540px;
 
     font-size: 0.7rem;
     line-height: 1.25;
     color: rgba(0, 0, 0, 0.42);
 
     pointer-events: none;
-    transition: opacity 300ms ease;
-
-    flex: 0 0 auto;
+    opacity: 1;
 }
 
 .chart-source--hidden {

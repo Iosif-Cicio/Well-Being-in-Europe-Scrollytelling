@@ -5,6 +5,9 @@
     <title>European Well-Being — Scrollytelling</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <meta name="author" content="Iosif Cicio">
+    <meta name="description" content="Interactive data visualization exploring well-being across European countries. Bachelor Thesis in Creative Computing, FH St. Pölten.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet" />
@@ -40,7 +43,8 @@
     <section id="intro-panel">
         <div class="intro-two-col">
 
-            <div class="intro-text">
+            <!-- Main introductory text as article -->
+            <article class="intro-text">
                 <p>
                     Europe is often described as stable.
                     It is characterised by long life expectancy,
@@ -67,7 +71,7 @@
                     and personal agency.
                 </p>
 
-                <p >
+                <p>
                     Survey data across Europe shows a recurring pattern.
                     Higher income is often associated with higher reported well-being,
                     but the relationship is neither uniform nor guaranteed.
@@ -90,16 +94,17 @@
                     but also along social, cultural, and generational lines.
                 </p>
 
-                <p class="scope-note">
-                    This analysis examines EU member states, EFTA countries
-                        (Iceland, Liechtenstein, Norway, Switzerland), and the United Kingdom.
-                        Data drawn from the World Happiness Report 2025, Our World in Data,
-                        and the World Bank. Full sources provided for each visualization.
-                </p>
-            </div>
+                <!-- Scope note as aside (supplementary information) -->
+                <aside class="scope-note" role="note" aria-label="Geographic and data scope">
+                    <strong>Scope:</strong> This analysis examines EU member states, EFTA countries
+                    (Iceland, Liechtenstein, Norway, Switzerland), and the United Kingdom.
+                    Data drawn from the World Happiness Report 2025, Our World in Data,
+                    and the World Bank. Full sources provided for each visualization.
+                </aside>
+            </article>
 
-            <!-- IMAGES -->
-            <div class="intro-media">
+            <!-- Images as aside (supporting visual content) -->
+            <aside class="intro-media" aria-label="Supporting imagery">
                 <div class="intro-media-sticky">
                     <img
                             src="/images/introMálagaStreetart.jpg"
@@ -113,12 +118,10 @@
                     />
                 </div>
                 <div class="intro-image-swap-trigger"></div>
-            </div>
+            </aside>
 
         </div>
     </section>
-
-
 
 
     <!-- ===================== CHAPTER ONE TITLE ===================== -->
@@ -156,8 +159,7 @@
                 <div id="map-choropleth">
 
                     <p class="chart-source">
-                        Source: World Happiness Report 2025, Figure 2.1 (three-year average),
-                        based on Gallup World Poll data.
+                        Source: World Happiness Report (2025), Figure 2.1
                     </p>
                 </div>
 
@@ -356,8 +358,7 @@
             </p>
 
             <p>
-            <p>
-                This chapter examines factors associated with well being, starting from income and extending beyond it.
+                This chapter examines factors associated with well-being, starting from income and extending beyond it.
                 The following steps introduce these conditions one at a time, such as social support, health, freedom, trust, and generosity.
                 Together, they show how similar economic resources can lead to different outcomes.
             </p>
@@ -370,7 +371,7 @@
             <figure>
                 <div id="chapter-three-viz"></div>
                 <p id="chapter-three-source" class="chart-source">
-                    Source: World Happiness Report (2025), based on Gallup World Poll data.
+                    Source: World Happiness Report (2025), Figure 2.1
                 </p>
             </figure>
 
@@ -904,34 +905,49 @@
     <!-- ===================== FOOTER ===================== -->
     <footer id="footer">
 
+        <!-- ===================== ETHICS & PERMISSIONS ===================== -->
         <p>
-            <span class="footer-title">Data (Map — Life evaluation across Europe).</span>
-            Life evaluation scores are based on responses to the Cantril Ladder question
-            collected by the Gallup World Poll and reported in the
-            <em>World Happiness Report 2025</em> (Figure&nbsp;2.1).
-            Country values represent three-year averages for the period 2022–2024
-            and are population-weighted to produce nationally representative estimates.
-            Rankings are based solely on self-assessed life evaluation
-            and are not constructed from economic or social indicators.
-            Source:
-            <a href="https://www.worldhappiness.report/data-sharing/" target="_blank" rel="noopener noreferrer">
+            <span class="footer-title">Data Ethics & Permissions</span>
+            All data used in this thesis is publicly available and used in accordance
+            with the respective licenses and terms of use.
+            World Happiness Report data is provided under
+            Creative Commons Attribution 4.0 International License (CC&nbsp;BY&nbsp;4.0),
+            permitting non-commercial and educational use with attribution.
+            World Bank data and Our World in Data are available under
+            CC&nbsp;BY&nbsp;4.0.
+            Visual assets are used under Pixabay License and Pexels License,
+            which permit free use for educational and academic purposes.
+            No personally identifiable data was collected or processed.
+            All visualizations are based on aggregated, country-level statistics.
+        </p>
+
+        <!-- ===================== DATA SOURCES ===================== -->
+        <p>
+            <span class="footer-title">Data (Map — Life evaluation across Europe)</span>
+            Helliwell, J. F., Layard, R., Sachs, J. D., De Neve, J.-E., Aknin, L. B.,
+            & Wang, S. (Eds.). (2025). <em>World Happiness Report 2025</em>, Figure&nbsp;2.1.
+            Sustainable Development Solutions Network.
+            Primary data collection: Gallup World Poll (2022–2024),
+            Cantril Ladder life evaluation question. Three-year population-weighted averages
+            as reported in WHR&nbsp;2025.
+            <br>Source:
+            <a href="https://worldhappiness.report/data-sharing/" target="_blank" rel="noopener noreferrer">
                 World Happiness Report – Data Sharing
             </a>.
         </p>
 
         <p>
-            <span class="footer-title">Data (Scatterplot — Income and life evaluation).</span>
-            Life evaluation scores are taken from the
-            <em>World Happiness Report 2025</em> (Figure&nbsp;2.1) and are based on
-            three-year averages of responses to the Cantril Ladder question
-            collected by the Gallup World Poll.
-            Income is measured as gross domestic product per capita,
-            adjusted for purchasing power parity (PPP),
-            using data from the World Bank.
-            GDP values represent three-year averages for the period 2022–2024,
-            calculated to reduce short-term volatility and improve comparability.
-            Sources:
-            <a href="https://www.worldhappiness.report/data-sharing/" target="_blank" rel="noopener noreferrer">
+            <span class="footer-title">Data (Scatterplot — Income and life evaluation)</span>
+            Life evaluation: Helliwell, J. F., Layard, R., Sachs, J. D.,
+            De Neve, J.-E., Aknin, L. B., & Wang, S. (Eds.). (2025).
+            <em>World Happiness Report 2025</em>, Figure&nbsp;2.1.
+            Three-year averages (2022–2024) based on Gallup World Poll data.
+            Income: World Bank. (2024).
+            <em>GDP per capita, PPP (current international $)</em>.
+            Three-year averages (2022–2024) calculated by author to match WHR reporting period.
+            PPP adjustments performed by World Bank to account for differences in cost of living across countries.
+            <br>Sources:
+            <a href="https://worldhappiness.report/data-sharing/" target="_blank" rel="noopener noreferrer">
                 World Happiness Report
             </a>
             and
@@ -941,117 +957,130 @@
         </p>
 
         <p>
-            <span class="footer-title">Data (Bar chart — Contributors to life evaluation).</span>
-            Life evaluation and its contributing factors are taken from the
-            <em>World Happiness Report 2025</em>.
-            Overall life evaluation is measured using the Cantril Ladder (0–10)
-            based on three-year averages of Gallup World Poll survey data.
-            The displayed components (income, social support, healthy life expectancy,
-            freedom, trust, generosity, and residual factors) represent the
-            report’s explanatory decomposition of life evaluation and are derived
-            from a combination of survey responses and external macro-level indicators.
-            Source:
-            <a href="https://www.worldhappiness.report/data-sharing/" target="_blank" rel="noopener noreferrer">
+            <span class="footer-title">Data (Bar chart — Contributors to life evaluation)</span>
+            Helliwell, J. F., Layard, R., Sachs, J. D., De Neve, J.-E., Aknin, L. B.,
+            & Wang, S. (Eds.). (2025). <em>World Happiness Report 2025</em>, Figure&nbsp;2.1.
+            Sustainable Development Solutions Network.
+            Overall life evaluation measured using the Cantril Ladder (0–10 scale)
+            based on three-year averages of Gallup World Poll survey data (2022–2024).
+            Displayed components (GDP per capita contribution, social support, healthy life expectancy,
+            freedom to make life choices, generosity, perceptions of corruption, and residual factors)
+            represent the report's explanatory decomposition of life evaluation, derived from a combination
+            of survey responses and external macro-level indicators.
+            <br>Source:
+            <a href="https://worldhappiness.report/data-sharing/" target="_blank" rel="noopener noreferrer">
                 World Happiness Report – Data Sharing
             </a>.
         </p>
 
         <p>
-            <span class="footer-title">Data (Timeline — Life evaluation over time).</span>
-            Life evaluation (Cantril Ladder, 0–10) from the World Happiness Report
-            (2011–2024), based on Gallup World Poll data.
-            Compiled by the Wellbeing Research Centre in collaboration with
-            Eurostat, OECD, IMF, and the World Bank.
-            Source:
+            <span class="footer-title">Data (Timeline — Life evaluation over time)</span>
+            Ritchie, H., Roser, M., Mathieu, E., & Ortiz-Ospina, E. (2025).
+            <em>Happiness and Life Satisfaction</em>. Our World in Data.
+            Life evaluation data (Cantril Ladder, 0–10 scale) from 2011–2024,
+            based on Gallup World Poll data. Compiled by the Wellbeing Research Centre
+            in collaboration with Eurostat, OECD, IMF, and the World Bank.
+            <br>Source:
             <a href="https://ourworldindata.org/happiness-and-life-satisfaction" target="_blank" rel="noopener noreferrer">
                 Our World in Data
             </a>
             (CC&nbsp;BY).
         </p>
 
+        <!-- ===================== VISUAL ASSETS ===================== -->
         <p>
-            <span class="footer-title">Images & Visual Assets.</span>
+            <span class="footer-title">Images & Visual Assets</span>
         </p>
 
         <ul>
             <li>
-                Title background image —
-                <em>Prague, Buildings, Sunrise</em>, photo by dropolto,
+                <strong>Figure&nbsp;1</strong> (Intro background) —
+                dropolto. (n.d.). <em>Prague, Buildings, Sunrise</em> [Photograph]. Pixabay.
                 <a href="https://pixabay.com/photos/prague-buildings-sunrise-sunset-5405649/" target="_blank" rel="noopener noreferrer">
-                    Pixabay
+                    https://pixabay.com/photos/prague-buildings-sunrise-sunset-5405649/
                 </a>
+                (Pixabay License)
             </li>
 
             <li>
-                Intro image (first) —
-                <em>Lebendige Straßenkunst in Málagas Stadtlandschaft</em>, photo by Liisbet Luup,
+                <strong>Figure&nbsp;2</strong> (Intro image, first) —
+                Luup, L. (n.d.). <em>Lebendige Straßenkunst in Málagas Stadtlandschaft</em> [Photograph]. Pexels.
                 <a href="https://www.pexels.com/de-de/foto/lebendige-strassenkunst-in-malagas-stadtlandschaft-33118528/" target="_blank" rel="noopener noreferrer">
-                    Pexels
+                    https://www.pexels.com/de-de/foto/lebendige-strassenkunst-in-malagas-stadtlandschaft-33118528/
                 </a>
+                (Pexels License)
             </li>
 
             <li>
-                Intro image (second) —
-                <em>Charmante Straßenszene mit durchdachter Beschilderung</em>, photo by Ayco World,
+                <strong>Figure&nbsp;3</strong> (Intro image, second) —
+                Ayco World. (n.d.). <em lang="de">Charmante Straßenszene mit durchdachter Beschilderung</em> [Photograph]. Pexels.
                 <a href="https://www.pexels.com/de-de/foto/charmante-strassenszene-mit-durchdachter-beschilderung-35176845/" target="_blank" rel="noopener noreferrer">
-                    Pexels
+                    https://www.pexels.com/de-de/foto/charmante-strassenszene-mit-durchdachter-beschilderung-35176845/
                 </a>
+                (Pexels License)
             </li>
 
             <li>
-                Chapter&nbsp;1 title background image —
-                <em>Paris, Rooftop, Eiffel Tower</em>, photo by Jibs-breizh,
+                <strong>Figure&nbsp;4</strong> (Chapter&nbsp;1 background) —
+                Jibs-breizh. (n.d.). <em>Paris, Rooftop, Eiffel Tower</em> [Photograph]. Pixabay.
                 <a href="https://pixabay.com/photos/paris-rooftop-eiffel-tower-urban-5310783/" target="_blank" rel="noopener noreferrer">
-                    Pixabay
+                    https://pixabay.com/photos/paris-rooftop-eiffel-tower-urban-5310783/
                 </a>
+                (Pixabay License)
             </li>
 
             <li>
-                Chapter&nbsp;2 title background image —
-                <em>Canal Grande, Venedig</em>, photo by Mark Gorman,
+                <strong>Figure&nbsp;5</strong> (Chapter&nbsp;2 background) —
+                Gorman, M. (n.d.). <em>Canal Grande, Venedig</em> [Photograph]. Pexels.
                 <a href="https://www.pexels.com/de-de/foto/canal-grande-venedig-623843/" target="_blank" rel="noopener noreferrer">
-                    Pexels
+                    https://www.pexels.com/de-de/foto/canal-grande-venedig-623843/
                 </a>
+                (Pexels License)
             </li>
 
             <li>
-                Chapter&nbsp;3 title background image —
-                <em>Luftaufnahme des Innsbrucker Stadtplatzes mit Menschen</em>, photo by Aleksandar Spasojevic,
+                <strong>Figure&nbsp;6</strong> (Chapter&nbsp;3 background) —
+                Spasojevic, A. (n.d.). <em lang="de">Luftaufnahme des Innsbrucker Stadtplatzes mit Menschen</em> [Photograph]. Pexels.
                 <a href="https://www.pexels.com/de-de/foto/luftaufnahme-des-innsbrucker-stadtplatzes-mit-menschen-35383198/" target="_blank" rel="noopener noreferrer">
-                    Pexels
+                    https://www.pexels.com/de-de/foto/luftaufnahme-des-innsbrucker-stadtplatzes-mit-menschen-35383198/
                 </a>
+                (Pexels License)
             </li>
 
             <li>
-                Chapter&nbsp;4 title background image —
-                <em>Beleuchtete Straße mit vorbeifahrenden Autos während der Nacht</em>, photo by Ashley Fontana,
+                <strong>Figure&nbsp;7</strong> (Chapter&nbsp;4 background) —
+                Fontana, A. (n.d.). <em lang="de">Beleuchtete Straße mit vorbeifahrenden Autos während der Nacht</em> [Photograph]. Pexels.
                 <a href="https://www.pexels.com/de-de/foto/beleuchtete-strasse-mit-vorbeifahrenden-autos-wahrend-der-nacht-705767/" target="_blank" rel="noopener noreferrer">
-                    Pexels
+                    https://www.pexels.com/de-de/foto/beleuchtete-strasse-mit-vorbeifahrenden-autos-wahrend-der-nacht-705767/
                 </a>
+                (Pexels License)
             </li>
 
             <li>
-                Chapter&nbsp;5 title background image —
-                <em>Karyatiden des Erechtheion in Athen</em>, photo by Ian MacKay,
+                <strong>Figure&nbsp;8</strong> (Chapter&nbsp;5 background) —
+                MacKay, I. (n.d.). <em lang="de">Karyatiden des Erechtheion in Athen</em> [Photograph]. Pexels.
                 <a href="https://www.pexels.com/de-de/foto/sonnenstrahl-skulptur-marmor-griechenland-18683746/" target="_blank" rel="noopener noreferrer">
-                    Pexels
+                    https://www.pexels.com/de-de/foto/sonnenstrahl-skulptur-marmor-griechenland-18683746/
                 </a>
+                (Pexels License)
             </li>
 
             <li>
-                Conclusion image (first) —
-                photo by Studio Voyager,
+                <strong>Figure&nbsp;9</strong> (Conclusion image, first) —
+                Studio Voyager. (n.d.). <em>People, Street, Crowd</em> [Photograph]. Pexels.
                 <a href="https://www.pexels.com/de-de/foto/menschen-strasse-menge-menschenmenge-9118505/" target="_blank" rel="noopener noreferrer">
-                    Pexels
+                    https://www.pexels.com/de-de/foto/menschen-strasse-menge-menschenmenge-9118505/
                 </a>
+                (Pexels License)
             </li>
 
             <li>
-                Conclusion image (second) —
-                <em>Familienspaziergang durch historische Bögen in Marseille</em>, photo by Quentin Guiot,
+                <strong>Figure&nbsp;10</strong> (Conclusion image, second) —
+                Guiot, Q. (n.d.). <em lang="de"> Familienspaziergang durch historische Bögen in Marseille</em> [Photograph]. Pexels.
                 <a href="https://www.pexels.com/de-de/foto/familienspaziergang-durch-historische-bogen-in-marseille-29844112/" target="_blank" rel="noopener noreferrer">
-                    Pexels
+                    https://www.pexels.com/de-de/foto/familienspaziergang-durch-historische-bogen-in-marseille-29844112/
                 </a>
+                (Pexels License)
             </li>
         </ul>
 
@@ -1061,7 +1090,7 @@
         </p>
 
         <p class="footer-credit">
-            Author: Iosif Cicio <br>
+            Iosif Cicio<br>
             Bachelor's Thesis, Creative Computing, FH St. Pölten
         </p>
 
