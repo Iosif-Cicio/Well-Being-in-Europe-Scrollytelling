@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>European Well-Being — Scrollytelling</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="author" content="Iosif Cicio">
+    <meta name="description" content="Interactive data visualization exploring well-being across European countries. Bachelor Thesis in Creative Computing, FH St. Pölten.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet" />
+
+
+  <script type="module" crossorigin src="/Well-Being-in-Europe-Scrollytelling/assets/index-Bs0pMqSA.js"></script>
+  <link rel="stylesheet" crossorigin href="/Well-Being-in-Europe-Scrollytelling/assets/index--w8wpe0_.css">
+</head>
+
+<body>
+
+<main>
+
+    <!-- ===================== HERO ===================== -->
+    <section id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-title">
+            <h1>Living Well in Europe</h1>
+            <p class="hero-deck">
+                What Shapes Everyday Well-Being Across European Countries
+            </p>
+        </div>
+
+    </section>
+
+    <!-- ===================== INTRO ===================== -->
+    <section id="intro-panel">
+        <div class="intro-two-col">
+
+            <!-- Main introductory text as article -->
+            <article class="intro-text">
+                <p>
+                    The continent of Europe is typically characterized as a stable place with long life expectancy rates,
+                    established public systems, and a somewhat predictable political and economic structure.
+                    However, the experience of everyday life can differ significantly from one European country to another.
+                </p>
+
+                <p>
+                    In some places, people report a general sense of confidence in daily life.
+                    Public systems are expected to function,
+                    institutions are largely trusted, corruption low,
+                    and future prospects appear manageable.
+                    In other contexts, daily experiences are more constrained,
+                    shaped by economic pressure, uncertainty,
+                    and a weaker confidence in social and institutional arrangements.
+                </p>
+
+                <p>
+                    These differences cannot be explained by economic output alone. Income is often associated with well-being, yet this
+                    pattern is not consistent among countries with similar resources. This suggests that perceived well-being depends not
+                    only on economic conditions, but also on how those conditions are experienced in everyday life — through security, social
+                    connection, and a sense of autonomy.
+                </p>
+
+                <p data-image="2">
+                    What matters, then, is the context that shapes these experiences.
+                    Differences in social and institutional contexts affect the extent to which
+                    people feel secure, supported, and in control in their daily lives. Receiving
+                    support in difficult situations, trusting public institutions, feeling in control
+                    of one's life decisions, and the strength of social networks are all part of the picture.
+                </p>
+
+                <p>
+                    The data that follows explores these patterns across Europe,
+                    revealing where confidence and security shape daily life, and
+                    where uncertainty and pressure dominate the experience.
+                </p>
+
+                <!-- Scope note as aside (supplementary information) -->
+                <aside class="scope-note" role="note" aria-label="Geographic and data scope">
+                    <strong>Scope:</strong> This analysis examines EU member states, EFTA countries
+                    (Iceland, Liechtenstein, Norway, Switzerland), and the United Kingdom.
+                    Data drawn from the World Happiness Report 2025, Our World in Data,
+                    and the World Bank. Full sources provided for each visualization.
+                </aside>
+            </article>
+
+            <!-- Images as aside (supporting visual content) -->
+            <aside class="intro-media" aria-label="Supporting imagery">
+                <div class="intro-media-sticky">
+                    <img
+                            src="/Well-Being-in-Europe-Scrollytelling/images/introMálagaStreetart.jpg"
+                            class="intro-img is-active"
+                            alt="Street life in Málaga"
+                    />
+                    <img
+                            src="/Well-Being-in-Europe-Scrollytelling/images/introhappinessRealLife.jpg"
+                            class="intro-img"
+                            alt="Everyday happiness in real life"
+                    />
+                </div>
+                <div class="intro-image-swap-trigger"></div>
+            </aside>
+
+        </div>
+    </section>
+
+
+    <!-- ===================== CHAPTER ONE TITLE ===================== -->
+    <section id="chapter-one-panel">
+        <div class="chapter-one-bg"></div>
+        <div class="chapter-one-title-wrapper">
+            <h1 class="chapter-one-title">How Europeans Feel About Life</h1>
+        </div>
+    </section>
+
+    <!-- ===================== CHAPTER ONE CONTENT ===================== -->
+    <section id="chapter-one-content">
+
+        <div class="lede">
+                <p>
+                    Well-being should not be seen as a fluctuating mood state.
+                    Instead, well-being has slow-moving, long-term dimensions.
+                </p>
+                <p>
+                    When people are asked to take a global view and judge their
+                    lives as a whole, they tend to rely primarily on stable,
+                    long-term features such as stability, relationships, health,
+                    trust, and opportunities.
+                </p>
+
+                <p>
+                    The following map represents this global self-evaluation across Europe.
+                    The focus here is not on short-term changes — such as an especially good
+                    day or a bad week — but on a long-term snapshot of the general life in a country,
+                    which emerges when the surrounding "noise" recedes and people are asked the
+                    seemingly simple but actually revealing question: "How's your life going?"
+                </p>
+        </div>
+
+
+        <div class="chapter-one-inner">
+
+            <!-- Sticky map + scroll steps -->
+            <div id="map-sticky-wrapper">
+
+                <div id="map-choropleth">
+
+                    <p class="chart-source">
+                        Source: World Happiness Report (2025), Figure 2.1
+                    </p>
+                </div>
+
+                <div class="map-steps">
+
+                    <!-- STEP 0 -->
+                    <div class="map-step">
+                        <div class="map-step-content">
+                            <strong>How to read this map?</strong><br /><br />
+                            Countries are coloured by average life satisfaction on a 0–10 scale,
+                            where 0 is the worst possible life and 10 is the best possible.
+                            <br /><br />
+                            <em>Map colours are scaled to the range of observed countries (5.6—7.7) for improved visual contrast —
+                                darker blues indicate relatively higher satisfaction within Europe.</em>
+                            <br /><br />
+                            Think of it as a national "temperature check" for lived experience:
+                            not what a country promises, but how people say it actually feels to live there.
+                        </div>
+                    </div>
+
+                    <!-- STEP 1 -->
+                    <div class="map-step">
+                        <div class="map-step-content">
+                            The top spots in the ranking illustrate a well-established trend:
+                            Finland, Denmark, Iceland, Sweden, and Norway occupy five of the top seven spots,
+                            and this can be explained by decades-long investment in institutional trust and public systems,
+                            creating an environment that supports a pervasive feeling of routine security.
+                        </div>
+                    </div>
+
+                    <!-- STEP 2 -->
+                    <div class="map-step">
+                        <div class="map-step-content">
+                            <p>
+                                Southern Europe offers a different story.
+                            </p>
+                            <p>
+                                Social life appears to be rich and closely connected.
+                                Family dinners go late into the evening, people know each other in the neighborhood,
+                                and town squares are inhabited on a warm summer nights.
+                            </p>
+                            <p>
+                                Yet Spain, Italy, Portugal, and Greece are found in the lower third of European well-being tables.
+                                Economic pressures and insecurity are dominant features here,
+                                with high rates of youth unemployment, insecure work, and lingering effects of recent debt crises.
+                            </p>
+                            <p>
+                                Community may provide security, but it does not pay the rent.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3 -->
+                    <div class="map-step">
+                        <div class="map-step-content">
+                            <p>
+                                In Central and Eastern Europe, the picture is mixed.
+                                Today, countries that have had a similar past have clearly divergent well-being outcomes.
+                            </p>
+                            <p>
+                                Lithuania ranks 11th overall, while Latvia ranks 25th, a difference of 0.6 points,
+                                even though they have had a similar past under the Soviets and are both in the European Union.
+                                Having had a similar past does not guarantee a similar present or future.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4 -->
+                    <div class="map-step">
+                        <div class="map-step-content">
+                            <p>
+                                The biggest lesson is also the most inconvenient: money isn't a shortcut to a good life.
+                                Some high-income countries rank lower than one expects,
+                                suggesting that comfort and contentment are often similar in theory, but not always so in practice.
+                            </p>
+                            <p>
+                                France, the United Kingdom, and Belgium have a similar level of prosperity,
+                                yet flop against some countries with less economic wealth.
+                                Such an observation calls for a consideration of what money cannot buy —
+                                a question the next chapters explore in depth.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="map-release"></div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ===================== CHAPTER TWO TITLE ===================== -->
+    <section id="chapter-two-panel">
+        <div class="chapter-two-bg"></div>
+        <div class="chapter-two-title-wrapper">
+            <h1 class="chapter-two-title">Wealth and Well-Being</h1>
+        </div>
+    </section>
+
+    <!-- ===================== CHAPTER TWO CONTENT ===================== -->
+    <section id="chapter-two-content">
+
+        <div class="lede">
+            <p>
+                If you line European countries up by income, the pattern looks reassuring: <br>
+                more money equals higher well-being. It reads like a clear equation.
+            </p>
+            <p>
+                This chapter tests how far that equation holds. We examine whether income reliably predicts how people evaluate
+                their lives, and where the relationship weakens, breaks, or becomes more complicated once countries are compared
+                more closely.
+            </p>
+        </div>
+
+        <section id="chapter-two-scrolly">
+            <figure>
+                <div id="chapter-two-viz"></div>
+
+                <p class="chart-source chart-source--hidden" id="chapter-two-source">
+                    Source: World Happiness Report 2025 (Figure 2.1) and World Bank
+                    (GDP per capita, PPP; three-year averages).
+                </p>
+            </figure>
+
+            <!-- Narrative steps -->
+            <article>
+
+                <!-- GDP -->
+                <div class="step" data-step="gdp-intro">
+                    <div class="step-content">
+                        <h2>How strongly is income linked to well-being?</h2>
+                        <p>
+                            Across countries, higher income is generally associated with higher life evaluation.
+                            On average, people in wealthier societies tend to rate their lives more positively.
+                        </p>
+                        <p>
+                            But the simplicity does not survive a closer look.
+                            Among countries with similar income levels, differences in well-being are large enough to raise questions.
+                            Economic prosperity does not translate into the same lived experience everywhere.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step" data-step="gdp-explainer">
+                    <div class="step-content">
+                        <h2>How income is measured in this chart</h2>
+                        <p>
+                            Income is measured as gross domestic product per capita, adjusted for purchasing power parity.
+                            This adjustment accounts for differences in the cost of living across countries,
+                            where the same amount of money can translate into very different material conditions.
+                        </p>
+                        <p>
+                            To reduce the influence of short-term economic fluctuations, income values are averaged across the years 2022 to 2024.
+                            This highlights more stable differences between countries rather than temporary shocks.
+                        </p>
+                        <p>
+                            Life evaluation reflects how people rate their own lives on a scale from zero to ten using the Cantril ladder.
+                            Within this group of countries, scores cluster within a relatively narrow range.
+                            The y-axis is therefore limited to highlight meaningful variation, rather than stretching the scale across values that do not appear in the data.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step" data-step="gdp-western-highlight">
+                    <div class="step-content">
+                        <h2>High income often aligns with higher well-being</h2>
+                        <p>
+                            Across Europe, countries with higher income levels generally report higher life evaluation.
+                            This is particularly true for countries located in the northern and western parts of the European continent.
+                        </p>
+                        <p>
+                            On the surface, this relationship is a positive and reassuring phenomenon,
+                            as it suggests that money is being used for its intended purpose.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step" data-step="gdp-outliers">
+                    <div class="step-content">
+                        <h2>Similar money, different outcomes</h2>
+                        <p>
+                            In this case, several high-income countries cluster closely in economic terms.
+                            Their GDP levels sit within a narrow range, close enough to invite direct comparison.
+                        </p>
+                        <p>
+                            And yet, their reported well-being does not move in lockstep.
+                            Some countries feel noticeably better to live in than others,
+                            even when income offers little help in telling them apart.
+                        </p>
+                        <p>
+                            This explanation cannot be found in bank balances. The following chapter
+                            will explore the social and institutional factors that may affect this
+                            translation, with a focus on support, trust, and confidence in public systems.
+                        </p>
+                    </div>
+                </div>
+
+            </article>
+        </section>
+    </section>
+
+    <!-- ===================== CHAPTER THREE TITLE ===================== -->
+    <section id="chapter-three-panel">
+        <div class="chapter-three-bg"></div>
+        <div class="chapter-three-title-wrapper">
+            <h1 class="chapter-three-title">What Actually Builds Well-Being?</h1>
+        </div>
+    </section>
+
+    <!-- ===================== CHAPTER THREE CONTENT ===================== -->
+    <section id="chapter-three-content">
+
+        <div class="lede">
+            <p>
+                Income matters, but it does not account for all differences in well-being.
+                Countries with similar levels of prosperity can still show substantial variation
+                in how people evaluate their lives.
+            </p>
+
+            <p>
+                This chapter examines factors associated with well-being, starting from income and extending beyond it.
+                The following steps introduce these conditions one at a time, such as social support, health, freedom, trust, and generosity.
+                Together, they show how similar economic resources can lead to different outcomes.
+            </p>
+        </div>
+        <div class="chapter-three-mask"></div>
+
+        <section id="chapter-three-scrolly">
+
+            <!-- Sticky visualization -->
+            <figure>
+                <div id="chapter-three-viz"></div>
+                <p id="chapter-three-source" class="chart-source">
+                    Source: World Happiness Report (2025), Figure 2.1
+                </p>
+            </figure>
+
+            <!-- Narrative steps -->
+            <article>
+
+                <!-- GDP -->
+                <div class="step" data-step="gdp-bars-intro">
+                    <div class="step-content">
+                        <h2>What income makes possible</h2>
+                        <p>
+                            Income affects well-being mainly through its impact on conditions
+                            experienced every day. It affects the degree to which people can
+                            meet their needs, protect themselves from financial or health-related
+                            shocks, and stabilize their everyday lives.
+                        </p>
+                        <p>
+                            Income does not produce well-being; instead, it increases the range of
+                            possible conditions, such as having a stable place to live, access to
+                            healthcare, freedom to change jobs, or having time for leisure.
+                        </p>
+                        <p>
+                            In the chart, income is shown as one of the factors that can impact the
+                            overall life evaluation score. It shows the amount of total outcome that
+                            is statistically linked to income, as opposed to income levels themselves.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step" data-step="gdp-bars-fill">
+                    <div class="step-content">
+                        <h2>Where income may reach its limits</h2>
+                        <p>
+                            Here, countries are ranked in terms of their income contribution
+                            to their overall life evaluation score.
+                            Only income data is included.
+                        </p>
+                        <p>
+                            Income contribution across countries varies, though
+                            within a relatively narrow range.
+                            No country stands out as being dominated by income.
+                        </p>
+                        <p>
+                            This indicates that, while income may be important, it is
+                            unlikely to be driving differences between countries in their overall score.
+                        </p>
+                    </div>
+                </div>
+
+
+                <!-- SOCIAL SUPPORT -->
+                <div class="step" data-step="social-support">
+                    <div class="step-content">
+                        <h2>Does support change how income is experienced?</h2>
+                        <p>
+                            Social support shrinks into one profound question that carries real weight:
+                            if life hits you hard, do you have someone you can rely on?
+                        </p>
+                        <p>
+                            That person could be a family member, a friend, or a neighbor,
+                            the everyday kind of help that carries people through tough moments.
+                        </p>
+                        <p>
+                            Having this support can help shape how manageable everyday struggles seem,
+                            even when money and resources are tight.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step" data-step="social-support-highlight">
+                    <div class="step-content">
+                        <h2>Similar incomes, different buffers</h2>
+                        <p>
+                            When social support is stronger, people feel less exposed.
+                            Money stretches further when you're not facing everything alone.
+                        </p>
+                        <p>
+                            When that support is absent, even economic comfort will offer less protection,
+                            and small setbacks can compound into a sustained sense of vulnerability and pressure.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- HEALTH -->
+                <div class="step" data-step="health">
+                    <div class="step-content">
+                        <h2>Does living longer translate into feeling better?</h2>
+                        <p>
+                            Healthy life expectancy is not simply about adding years.
+                            It reflects how much of life is spent without persistent limitations,
+                            the difference between staying alive and actually being able to live.
+                        </p>
+                        <p>
+                            The difference matters.
+                            Extra years lived in poor health do little to improve how people evaluate their lives,
+                            while years lived with autonomy and physical capacity to participate in day-to-day
+                            activities tend to matter much more.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step" data-step="health-highlight">
+                    <div class="step-content">
+                        <h2>Health as a condition, not a conclusion</h2>
+                        <p>
+                            Health is a secure foundation upon which well-being is built, and countries
+                            in which people have longer and healthier lives are rarely found at the bottom
+                            of life evaluations. Good health reduces life's constraints,
+                            which otherwise subtract from well-being.
+                        </p>
+                        <p>
+                            While health is a major determinant, it does not fully explain why some high-performing
+                            countries score higher than others. Even when health outcomes are broadly similar,
+                            life evaluations can still diverge notably. This suggests that once basic functioning
+                            is secured, the remaining differences are less about survival and more about how safe,
+                            supported, and empowered everyday life feels.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FREEDOM -->
+                <div class="step" data-step="freedom">
+                    <div class="step-content">
+                        <h2>Do people feel able to shape their own lives?</h2>
+                        <p>
+                            Perceived freedom reflects whether people feel able
+                            to make meaningful choices about their own lives,
+                            be it work, relationships, direction, and identity.
+                        </p>
+                        <p>
+                            Economic security does not necessarily mean having a
+                            sense of personal autonomy in certain situations.
+                            The absence of a perceived personal control in one's
+                            life means economic security may feel impressive on
+                            paper, but underwhelming in practice.
+                        </p>
+                        <p>
+                            What's the point of having a good-paying job if you feel trapped in it?
+                            What good is a big home if you feel stuck there?
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step" data-step="freedom-highlight">
+                    <div class="step-content">
+                        <h2>Resources without agency</h2>
+                        <p>
+                            If people perceive that they have little ability to shape important
+                            decisions in their lives, their well-being tends to suffer even in
+                            conditions that are relatively favorable in other respects.
+                        </p>
+                        <p>
+                            Perceived autonomy affects people's approaches to their jobs,
+                            their interpersonal relations, and their plans for the future,
+                            and hence should be regarded as a central rather than a
+                            peripheral condition.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- TRUST -->
+                <div class="step" data-step="trust">
+                    <div class="step-content">
+                        <h2>Can everyday life feel secure without trust?</h2>
+                        <p>
+                            Trust means the expectation of fairness in the behavior of other people
+                            and the perception of institutions as reliable.
+                        </p>
+                        <p>
+                            Lack of trust creates friction in various areas of life,
+                            and this friction translates into greater stress levels,
+                            cynicism, and the perception that life is harder than it has to be.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step" data-step="trust-highlight">
+                    <div class="step-content">
+                        <h2>Why trust makes life feel easier</h2>
+                        <p>
+                            High levels of trust also correlate with increased predictability in one's life.
+                            Trust is far from perfect but is related to perceptions of fairness, calmness,
+                            and minimal mental relaxation.
+                        </p>
+                        <p>
+                            In these settings, people spend less time struggling with or doubting the
+                            trustworthiness of systems and more time focusing on their daily activities.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- GENEROSITY -->
+                <div class="step" data-step="generosity">
+                    <div class="step-content">
+                        <h2>What everyday generosity might signal</h2>
+                        <p>
+                            In the decomposition, the influence of generosity is smaller relative to most other factors.
+                            The numerical weight is small.
+                        </p>
+                        <p>
+                            What it actually measures is the degree to which providing assistance is common and anticipated,
+                            and thus serves as a proxy for social norms and cooperation.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step" data-step="generosity-highlight">
+                    <div class="step-content">
+                        <h2>Signals of social cohesion</h2>
+                        <p>
+                            Higher generosity scores tend to appear in places
+                            where social ties feel stronger and more balanced.
+                        </p>
+                        <p>
+                            Although generosity does not necessarily explain
+                            levels of well-being, it often appears in contexts
+                            where cooperative and supportive societies are
+                            assumed or taken for granted.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- DYSTOPIA + RESIDUAL -->
+                <div class="step" data-step="dystopia-intro">
+                    <div class="step-content">
+                        <h2>What remains unexplained</h2>
+                        <p>
+                            Even after accounting for income, health, social support,
+                            freedom, trust, and generosity,
+                            differences in how people evaluate their lives remain.
+                        </p>
+                        <p>
+                            The final segment of this section represents the portion
+                            of well-being that cannot be explained by these factors.
+                            It represents factors that are more difficult to quantify,
+                            such as expectations, cultural influences, recent events,
+                            and attitudes.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step" data-step="dystopia-sort">
+                    <div class="step-content">
+                        <h2>Feeling better or worse than expected</h2>
+                        <p>
+                            When this remaining component is considered,
+                            some countries appear to perform better than
+                            their measured circumstances suggest.
+                        </p>
+                        <p>
+                            While others underachieve. On paper,
+                            they have what should be a good life,
+                            yet people report something missing.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Conclusion -->
+                <div class="step chapter-transition" data-step="chapter-three-outro">
+                    <div class="step-content">
+                        <p>
+                            Collectively, these trends suggest that a simple, yet compelling,
+                            truth underlies all of the trends presented in this chapter:
+                            no one factor in particular is sufficient to explain well-being in isolation.
+                            While income, social support, health, freedom, trust, and generosity are all
+                            associated with well-being, none of these factors dominates or fully explains the others.
+                        </p>
+                        <p>
+                            In fact, societies that achieve similar levels of overall well-being do so in different
+                            combinations of these factors. In some cases, economic security may dominate, while in
+                            other cases, social support, trust in institutions, or personal autonomy may offset weaker
+                            performances in other areas.
+                        </p>
+                        <p>
+                            In the end, what matters most is not that one or another factor dominates, but how these
+                            factors interact with one another. Well-being is ultimately a product of their interaction,
+                            shaped by social and institutional context as much as by economic or individual factors.
+                        </p>
+                    </div>
+                </div>
+
+
+            </article>
+        </section>
+    </section>
+
+    <!-- ===================== CHAPTER FOUR — TITLE ===================== -->
+    <section id="chapter-four-panel">
+        <div class="chapter-four-bg"></div>
+        <div class="chapter-four-title-wrapper">
+            <h2 class="chapter-four-title">
+                How Well-Being in Europe Has Changed Over Time
+            </h2>
+        </div>
+    </section>
+
+    <!-- ===================== CHAPTER FOUR — INTRO ===================== -->
+    <section id="chapter-four-content">
+        <div class="lede">
+            <p>
+                Well-being does not stand still.
+                Over time, it shifts, sometimes slowly and sometimes more abruptly.
+            </p>
+
+            <p>
+                The current chapter directly deals with these dynamics of well-being over time.
+                It uses a simple timeline approach to examine the change in average life evaluation
+                over time, with an emphasis on overall patterns rather than specific details.
+            </p>
+
+            <p>
+                The focus of the analysis is on change rather than rank.
+                In cross-country comparisons, phases of stability, gradual
+                change, and more dramatic change emerge.
+            </p>
+
+            <p>
+                Over time, countries take very different paths.
+                Some show stability, some show gradual change,
+                and some show more dramatic change,
+                including change large enough to alter their relative positions.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- ===================== CHAPTER FOUR — SCROLL (MAP-STYLE) ===================== -->
+    <section id="chapter-four-scrolly">
+
+        <!-- Sticky visualization -->
+        <div id="chapter-four-sticky">
+            <div id="chapter-four-viz"></div>
+
+
+            <!-- ===================== CHAPTER FOUR — CHART SOURCE ===================== -->
+            <p class="chart-source">
+                Source: Our World in Data (2025), based on data from the Wellbeing Research Centre;
+                Eurostat, OECD, IMF, and World Bank.
+            </p>
+        </div>
+
+
+        <!-- Steps -->
+        <div id="chapter-four-steps">
+
+            <!-- STEP 0 — how to read the chart -->
+            <div class="chapter-four-step" data-step="0">
+                <div class="chapter-four-step-content">
+                    <p>
+                        Each line represents a country.
+                        Its position indicates an average life evaluation,
+                        and how that position shifts over time reveals whether well-being is stable, rising, or falling.
+                    </p>
+                </div>
+            </div>
+
+            <!-- STEP 1 — where countries start -->
+            <div class="chapter-four-step" data-step="1">
+                <div class="chapter-four-step-content">
+                    <p>
+                        At the start of the timeline, countries already differ noticeably.
+                        Average life evaluation begins at clearly different levels,
+                        with some countries starting much higher than others.
+                    </p>
+                </div>
+            </div>
+
+            <!-- STEP 2 — positions begin to shift -->
+            <div class="chapter-four-step" data-step="2">
+                <div class="chapter-four-step-content">
+                    <p>
+                        As time progresses, many of these positions begin to shift.
+                        Several countries move upward,
+                        while others remain stable or decline,
+                        gradually changing the overall distribution.
+                    </p>
+                </div>
+            </div>
+
+            <!-- STEP 3 — patterns settle -->
+            <div class="chapter-four-step" data-step="3">
+                <div class="chapter-four-step-content">
+                    <p>
+                        Over longer periods, these shifts become more consistent.
+                        Short-term ups and downs fade into the background,
+                        and longer-term tendencies begin to stand out.
+                    </p>
+                </div>
+            </div>
+
+            <!-- STEP 4 — long-term decline -->
+            <div class="chapter-four-step" data-step="4">
+                <div class="chapter-four-step-content">
+                    <p>
+                        The life evaluation of a small group of countries, including
+                        Austria, Germany, Switzerland, the UK, and Cyprus, continues
+                        with an increasing trend of decline. The life evaluation of
+                        these countries decreases gradually and not suddenly.
+                    </p>
+                </div>
+            </div>
+
+            <!-- STEP 5 — sustained improvement -->
+            <div class="chapter-four-step" data-step="5">
+                <div class="chapter-four-step-content">
+                    <p>
+                        In contrast, Bulgaria, Estonia, Lithuania, Latvia, and Romania
+                        show an upward pattern. Their average life evaluation increases
+                        gradually over time, indicating steady improvement rather than sudden jumps.
+                    </p>
+                </div>
+            </div>
+
+            <!-- STEP 6 — CONCLUSION -->
+            <div class="chapter-four-step" data-step="6">
+                <div class="chapter-four-step-content">
+                    <p>
+                        Over time, countries show clearly different long-term trajectories.
+                        The largest declines are concentrated in a group of Western countries,
+                        which begin the period at relatively high levels
+                        and gradually lose ground across the years.
+                    </p>
+
+                    <p>
+                        The most dramatic and sustained improvements can be seen in a portion of Eastern Europe,
+                        where life evaluation continues to increase steadily from low starting points.
+                        Over time, this trend helps to close a portion of these previously existing gaps.
+                    </p>
+
+                    <p>
+                        A third cohort is stable, maintaining high levels of life evaluation with minimal fluctuations over time.
+                    </p>
+
+                    <p>
+                        Over time, starting position proves less decisive than consistency.
+                        Some countries start high and remain high, while others start high
+                        and gradually fall. A few manage to improve sufficiently to change
+                        their relative position.
+                    </p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="chapter-four-release"></div>
+    </section>
+
+
+    <!-- ===================== CHAPTER FIVE — TITLE ===================== -->
+    <section id="chapter-five-panel">
+        <div class="chapter-five-bg"></div>
+        <div class="chapter-five-title-wrapper">
+            <h2 class="chapter-five-title">
+                So, how does life feel across Europe?
+            </h2>
+        </div>
+    </section>
+
+    <!-- ===================== CHAPTER FIVE — CONCLUSION ===================== -->
+    <section id="chapter-five-content">
+        <div class="chapter-five-grid">
+
+            <div class="chapter-five-text">
+                <p>
+                    What makes a country feel good to live in is not something that can
+                    be represented by a simple number. While rankings can give a sense
+                    of broad trends, they can also obscure important details.
+                    Life evaluation is the result of a dynamic interplay between economic resources,
+                    social and institutional arrangements, and the stability and/or erosion of those arrangements.
+                </p>
+
+                <p>
+                    A superficial examination of Europe seems to indicate a familiar relationship:
+                    more income, better well-being. But this does not always yield the expected outcomes.
+                    A comparison of countries with similar economic resources can have vastly different
+                    lived experiences, indicating that economic resources are not the whole story.
+                </p>
+
+                <p>
+                    Examining the various conditions that contribute to well-being can give a better sense
+                    of why this might be the case. While income offers a sense of economic stability,
+                    social support, health, freedom, and so on, all contribute to how that stability feels.
+                    They are not additive, and they interact in ways that can have similar outcomes,
+                    even if they are arrived at differently.
+                </p>
+
+                <p>
+                    If we look across time, we can see that well-being levels do not remain static,
+                    but they also do not fluctuate wildly. Rather, they shift slowly and irregularly,
+                    with some countries holding steady, others steadily rising, and a few steadily falling.
+                </p>
+
+                <p>
+                    Together, these findings support the idea that well-being is a systemic outcome.
+                    It is produced by the interplay of material conditions, social relationships,
+                    the reliability of institutions, and people’s sense of agency in their everyday lives.
+                    No one factor is paramount everywhere, and there is no singular way to get there.
+                </p>
+
+                <p>
+                    Knowing what makes a country feel good, however, requires moving beyond rankings.
+                    It requires looking at the conditions of everyday life, how a society copes with
+                    stress and uncertainty, and whether people trust the institutions that guide their choices.
+                    Well-being, in other words, is not so much about good conditions as it is about whether
+                    those conditions hold up under stress.
+                </p>
+            </div>
+
+            <!-- Image -->
+            <div class="chapter-five-media">
+                <div class="chapter-five-media-sticky">
+                    <img
+                            src="/Well-Being-in-Europe-Scrollytelling/images/chapterFiveFirst.jpg"
+                            class="chapter-five-img is-active"
+                            alt="Europe well-being early period"
+                    />
+                    <img
+                            src="/Well-Being-in-Europe-Scrollytelling/images/chapterFiveSecond.jpg"
+                            class="chapter-five-img"
+                            alt="Europe well-being recent period"
+                    />
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer id="footer">
+
+        <!-- ===================== ETHICS & PERMISSIONS ===================== -->
+        <p>
+            <span class="footer-title">Data Ethics & Permissions</span>
+            All data used in this thesis is publicly available and used in accordance
+            with the respective licenses and terms of use.
+            World Happiness Report data is provided under
+            Creative Commons Attribution 4.0 International License (CC&nbsp;BY&nbsp;4.0),
+            permitting non-commercial and educational use with attribution.
+            World Bank data and Our World in Data are available under
+            CC&nbsp;BY&nbsp;4.0.
+            Visual assets are used under Pixabay License and Pexels License,
+            which permit free use for educational and academic purposes.
+            No personally identifiable data was collected or processed.
+            All visualizations are based on aggregated, country-level statistics.
+        </p>
+
+        <!-- ===================== DATA SOURCES ===================== -->
+        <p>
+            <span class="footer-title">Data (Map — Life evaluation across Europe)</span>
+            Helliwell, J. F., Layard, R., Sachs, J. D., De Neve, J.-E., Aknin, L. B.,
+            & Wang, S. (Eds.). (2025). <em>World Happiness Report 2025</em>, Figure&nbsp;2.1.
+            Sustainable Development Solutions Network.
+            Primary data collection: Gallup World Poll (2022–2024),
+            Cantril Ladder life evaluation question. Three-year population-weighted averages
+            as reported in WHR&nbsp;2025.
+            <br>Source:
+            <a href="https://worldhappiness.report/data-sharing/" target="_blank" rel="noopener noreferrer">
+                World Happiness Report – Data Sharing
+            </a>.
+        </p>
+
+        <p>
+            <span class="footer-title">Data (Scatterplot — Income and life evaluation)</span>
+            Life evaluation: Helliwell, J. F., Layard, R., Sachs, J. D.,
+            De Neve, J.-E., Aknin, L. B., & Wang, S. (Eds.). (2025).
+            <em>World Happiness Report 2025</em>, Figure&nbsp;2.1.
+            Three-year averages (2022–2024) based on Gallup World Poll data.
+            Income: World Bank. (2024).
+            <em>GDP per capita, PPP (current international $)</em>.
+            Three-year averages (2022–2024) calculated by author to match WHR reporting period.
+            PPP adjustments performed by World Bank to account for differences in cost of living across countries.
+            <br>Sources:
+            <a href="https://worldhappiness.report/data-sharing/" target="_blank" rel="noopener noreferrer">
+                World Happiness Report
+            </a>
+            and
+            <a href="https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.CD" target="_blank" rel="noopener noreferrer">
+                World Bank
+            </a>.
+        </p>
+
+        <p>
+            <span class="footer-title">Data (Bar chart — Contributors to life evaluation)</span>
+            Helliwell, J. F., Layard, R., Sachs, J. D., De Neve, J.-E., Aknin, L. B.,
+            & Wang, S. (Eds.). (2025). <em>World Happiness Report 2025</em>, Figure&nbsp;2.1.
+            Sustainable Development Solutions Network.
+            Overall life evaluation measured using the Cantril Ladder (0–10 scale)
+            based on three-year averages of Gallup World Poll survey data (2022–2024).
+            Displayed components (GDP per capita contribution, social support, healthy life expectancy,
+            freedom to make life choices, generosity, perceptions of corruption, and residual factors)
+            represent the report's explanatory decomposition of life evaluation, derived from a combination
+            of survey responses and external macro-level indicators.
+            <br>Source:
+            <a href="https://worldhappiness.report/data-sharing/" target="_blank" rel="noopener noreferrer">
+                World Happiness Report – Data Sharing
+            </a>.
+        </p>
+
+        <p>
+            <span class="footer-title">Data (Timeline — Life evaluation over time)</span>
+            Ritchie, H., Roser, M., Mathieu, E., & Ortiz-Ospina, E. (2025).
+            <em>Happiness and Life Satisfaction</em>. Our World in Data.
+            Life evaluation data (Cantril Ladder, 0–10 scale) from 2011–2024,
+            based on Gallup World Poll data. Compiled by the Wellbeing Research Centre
+            in collaboration with Eurostat, OECD, IMF, and the World Bank.
+            <br>Source:
+            <a href="https://ourworldindata.org/happiness-and-life-satisfaction" target="_blank" rel="noopener noreferrer">
+                Our World in Data
+            </a>
+            (CC&nbsp;BY).
+        </p>
+
+        <!-- ===================== VISUAL ASSETS ===================== -->
+        <p>
+            <span class="footer-title">Images & Visual Assets</span>
+        </p>
+
+        <ul>
+            <li>
+                <strong>Figure&nbsp;1</strong> (Intro background) —
+                dropolto. (n.d.). <em>Prague, Buildings, Sunrise</em> [Photograph]. Pixabay.
+                <a href="https://pixabay.com/photos/prague-buildings-sunrise-sunset-5405649/" target="_blank" rel="noopener noreferrer">
+                    https://pixabay.com/photos/prague-buildings-sunrise-sunset-5405649/
+                </a>
+                (Pixabay License)
+            </li>
+
+            <li>
+                <strong>Figure&nbsp;2</strong> (Intro image, first) —
+                Luup, L. (n.d.). <em>Lebendige Straßenkunst in Málagas Stadtlandschaft</em> [Photograph]. Pexels.
+                <a href="https://www.pexels.com/de-de/foto/lebendige-strassenkunst-in-malagas-stadtlandschaft-33118528/" target="_blank" rel="noopener noreferrer">
+                    https://www.pexels.com/de-de/foto/lebendige-strassenkunst-in-malagas-stadtlandschaft-33118528/
+                </a>
+                (Pexels License)
+            </li>
+
+            <li>
+                <strong>Figure&nbsp;3</strong> (Intro image, second) —
+                Ayco World. (n.d.). <em lang="de">Charmante Straßenszene mit durchdachter Beschilderung</em> [Photograph]. Pexels.
+                <a href="https://www.pexels.com/de-de/foto/charmante-strassenszene-mit-durchdachter-beschilderung-35176845/" target="_blank" rel="noopener noreferrer">
+                    https://www.pexels.com/de-de/foto/charmante-strassenszene-mit-durchdachter-beschilderung-35176845/
+                </a>
+                (Pexels License)
+            </li>
+
+            <li>
+                <strong>Figure&nbsp;4</strong> (Chapter&nbsp;1 background) —
+                Jibs-breizh. (n.d.). <em>Paris, Rooftop, Eiffel Tower</em> [Photograph]. Pixabay.
+                <a href="https://pixabay.com/photos/paris-rooftop-eiffel-tower-urban-5310783/" target="_blank" rel="noopener noreferrer">
+                    https://pixabay.com/photos/paris-rooftop-eiffel-tower-urban-5310783/
+                </a>
+                (Pixabay License)
+            </li>
+
+            <li>
+                <strong>Figure&nbsp;5</strong> (Chapter&nbsp;2 background) —
+                Gorman, M. (n.d.). <em>Canal Grande, Venedig</em> [Photograph]. Pexels.
+                <a href="https://www.pexels.com/de-de/foto/canal-grande-venedig-623843/" target="_blank" rel="noopener noreferrer">
+                    https://www.pexels.com/de-de/foto/canal-grande-venedig-623843/
+                </a>
+                (Pexels License)
+            </li>
+
+            <li>
+                <strong>Figure&nbsp;6</strong> (Chapter&nbsp;3 background) —
+                Spasojevic, A. (n.d.). <em lang="de">Luftaufnahme des Innsbrucker Stadtplatzes mit Menschen</em> [Photograph]. Pexels.
+                <a href="https://www.pexels.com/de-de/foto/luftaufnahme-des-innsbrucker-stadtplatzes-mit-menschen-35383198/" target="_blank" rel="noopener noreferrer">
+                    https://www.pexels.com/de-de/foto/luftaufnahme-des-innsbrucker-stadtplatzes-mit-menschen-35383198/
+                </a>
+                (Pexels License)
+            </li>
+
+            <li>
+                <strong>Figure&nbsp;7</strong> (Chapter&nbsp;4 background) —
+                Fontana, A. (n.d.). <em lang="de">Beleuchtete Straße mit vorbeifahrenden Autos während der Nacht</em> [Photograph]. Pexels.
+                <a href="https://www.pexels.com/de-de/foto/beleuchtete-strasse-mit-vorbeifahrenden-autos-wahrend-der-nacht-705767/" target="_blank" rel="noopener noreferrer">
+                    https://www.pexels.com/de-de/foto/beleuchtete-strasse-mit-vorbeifahrenden-autos-wahrend-der-nacht-705767/
+                </a>
+                (Pexels License)
+            </li>
+
+            <li>
+                <strong>Figure&nbsp;8</strong> (Chapter&nbsp;5 background) —
+                MacKay, I. (n.d.). <em lang="de">Karyatiden des Erechtheion in Athen</em> [Photograph]. Pexels.
+                <a href="https://www.pexels.com/de-de/foto/sonnenstrahl-skulptur-marmor-griechenland-18683746/" target="_blank" rel="noopener noreferrer">
+                    https://www.pexels.com/de-de/foto/sonnenstrahl-skulptur-marmor-griechenland-18683746/
+                </a>
+                (Pexels License)
+            </li>
+
+            <li>
+                <strong>Figure&nbsp;9</strong> (Conclusion image, first) —
+                Studio Voyager. (n.d.). <em>People, Street, Crowd</em> [Photograph]. Pexels.
+                <a href="https://www.pexels.com/de-de/foto/menschen-strasse-menge-menschenmenge-9118505/" target="_blank" rel="noopener noreferrer">
+                    https://www.pexels.com/de-de/foto/menschen-strasse-menge-menschenmenge-9118505/
+                </a>
+                (Pexels License)
+            </li>
+
+            <li>
+                <strong>Figure&nbsp;10</strong> (Conclusion image, second) —
+                Guiot, Q. (n.d.). <em lang="de"> Familienspaziergang durch historische Bögen in Marseille</em> [Photograph]. Pexels.
+                <a href="https://www.pexels.com/de-de/foto/familienspaziergang-durch-historische-bogen-in-marseille-29844112/" target="_blank" rel="noopener noreferrer">
+                    https://www.pexels.com/de-de/foto/familienspaziergang-durch-historische-bogen-in-marseille-29844112/
+                </a>
+                (Pexels License)
+            </li>
+        </ul>
+
+        <p>
+            All images are used under the Pixabay License or the Pexels License
+            and are free for academic and editorial use.
+        </p>
+
+        <p class="footer-credit">
+            Iosif Cicio<br>
+            Bachelor's Thesis, Creative Computing, FH St. Pölten
+        </p>
+
+    </footer>
+
+
+</main>
+</body>
+</html>
