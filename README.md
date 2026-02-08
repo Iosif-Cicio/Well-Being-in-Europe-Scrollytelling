@@ -169,21 +169,17 @@ An offline build is included with the thesis submission to ensure long-term repr
 
 ### Key References
 
-- Segel, E., & Heer, J. (2010). Narrative visualization: Telling stories with data. *IEEE TVCG, 16*(6), 1139-1148.
-- Hullman, J., & Diakopoulos, N. (2011). Visualization rhetoric: Framing effects in narrative visualization. *IEEE TVCG, 17*(12), 2231-2240.
-- Lee, B., et al. (2015). More than telling a story: Transforming data into visually shared stories. *IEEE Computer Graphics and Applications, 35*(5), 84-89.
+- **Segel, E., & Heer, J. (2010).** Narrative visualization: Telling stories with data. *IEEE Transactions on Visualization and Computer Graphics, 16*(6), 1139-1148.  
+  *Foundational framework for author-driven, reader-driven, and hybrid (Martini-glass) storytelling structures - the conceptual basis for this project.*
 
----
+- **Hullman, J., & Diakopoulos, N. (2011).** Visualization rhetoric: Framing effects in narrative visualization. *IEEE Transactions on Visualization and Computer Graphics, 17*(12), 2231-2240.  
+  *Examines how visual framing and rhetorical choices influence interpretation - informs design decisions for neutrality and transparency.*
 
-## Contributing
+- **Lee, B., Riche, N. H., Isenberg, P., & Carpendale, S. (2015).** More than telling a story: Transforming data into visually shared stories. *IEEE Computer Graphics and Applications, 35*(5), 84-89.  
+  *Explores how data stories engage shared interpretation - informs the engagement and clarity dimensions of this study.*
 
-While this is primarily an academic project, feedback and suggestions are welcome:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/improvement`)
-3. Commit your changes (`git commit -am 'Add new feature'`)
-4. Push to the branch (`git push origin feature/improvement`)
-5. Open a Pull Request
+- **Weber, W., Engebretsen, M., & Kennedy, H. (2018).** Data stories: Rethinking journalistic storytelling in the context of data journalism. *Studies in Communication Sciences, 18*(1), 191-206.  
+  *Connects narrative visualization research to data journalism practice - demonstrates relevance of interactive versus static approaches.*
 
 ---
 
