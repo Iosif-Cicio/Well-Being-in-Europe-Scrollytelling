@@ -66,11 +66,13 @@
 
 /* =========================
    CHAPTER TWO — SCROLL LAYOUT
+   FIX: Changed minmax to allow shrinking on smaller laptops
 ========================= */
 
 #chapter-two-scrolly {
     display: grid;
-    grid-template-columns: 420px minmax(640px, 1fr);
+    /* Changed from minmax(640px, 1fr) to allow the chart to shrink */
+    grid-template-columns: 420px minmax(400px, 1fr);
     gap: 96px;
 
     max-width: 1600px;
@@ -226,4 +228,65 @@
 
 .chart-source--hidden {
     opacity: 0;
+}
+
+/* =========================
+   14" LAPTOP / 125% SCALING
+   (effective ~1100-1400px width)
+========================= */
+
+@media (max-width: 1400px) {
+    #chapter-two-scrolly {
+        grid-template-columns: 360px minmax(350px, 1fr);
+        gap: 64px;
+        padding: 0 40px;
+    }
+
+    #chapter-two-scrolly .step-content {
+        max-width: 340px;
+    }
+
+    #chapter-two-scrolly figure {
+        min-height: 450px;
+    }
+
+    #chapter-two-viz {
+        padding: 8px 24px 48px 8px;
+    }
+}
+
+@media (max-width: 1200px) {
+    #chapter-two-scrolly {
+        grid-template-columns: 320px minmax(320px, 1fr);
+        gap: 48px;
+        padding: 0 32px;
+    }
+
+    #chapter-two-scrolly .step-content {
+        max-width: 300px;
+        padding-right: 20px;
+    }
+
+    #chapter-two-scrolly .step h2 {
+        font-size: 1.4rem;
+    }
+
+    #chapter-two-scrolly .step p {
+        font-size: 0.95rem;
+    }
+
+    #chapter-two-scrolly figure {
+        min-height: 400px;
+        padding: 14px;
+    }
+
+    #chapter-two-viz {
+        padding: 6px 16px 44px 6px;
+    }
+
+    #chapter-two-source {
+        left: 18px;
+        bottom: 16px;
+        max-width: 400px;
+    }
 }

@@ -34,7 +34,6 @@ const RICH_AND_HAPPY = [
 ];
 
 // High-income peer group with divergent well-being outcomes
-// was before rich but unhappy, but shifted from identifying outliers
 const SIMILAR_INCOME_DIFFERENT_WELLBEING = [
     "Germany",
     "Belgium",
@@ -59,30 +58,38 @@ const isSmallScreen = window.innerHeight < 800;
 /* ============================================================
    INIT
    SVG CONTAINER, SCALES, AXES, DOTS
+   FIX: Use viewBox for responsive scaling
 ============================================================ */
 
 export function initScatterplot({ container, data, width: w, height: h }) {
-    margin = { top: 64,
-        right: 148,
-        bottom: isSmallScreen ? 80 : 40,
-        left: 64 };
+    // Responsive margins that scale down on smaller containers
+    const isNarrow = w < 600;
+    margin = {
+        top: 64,
+        right: isNarrow ? 60 : 148,
+        bottom: isSmallScreen ? 80 : 50,
+        left: isNarrow ? 50 : 64
+    };
 
     width = w - margin.left - margin.right;
     height = h - margin.top - margin.bottom;
 
     container.selectAll("*").remove();
 
+    // FIX: Use viewBox for responsive scaling instead of fixed dimensions
     svg = container
         .append("svg")
-        .attr("width", w)
-        .attr("height", h);
+        .attr("viewBox", `0 0 ${w} ${h}`)
+        .attr("preserveAspectRatio", "xMidYMid meet")
+        .style("width", "100%")
+        .style("height", "100%");
 
     g = svg
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
     setupScales();
-    drawAxes();
+    drawAxes(w);
     drawDots(data);
     setupInlineLabels();
     setupHoverLayer();
@@ -108,11 +115,12 @@ function setupScales() {
    AXES
 ============================================================ */
 
-function drawAxes() {
-    const ticks = [
-        20000, 40000, 60000, 80000,
-        100000, 120000, 140000, 160000
-    ];
+function drawAxes(containerWidth) {
+    // FIX: Reduce ticks on narrower screens
+    const isNarrow = containerWidth < 600;
+    const ticks = isNarrow
+        ? [20000, 60000, 100000, 140000]
+        : [20000, 40000, 60000, 80000, 100000, 120000, 140000, 160000];
 
     g.append("g")
         .attr("transform", `translate(0,${height})`)
@@ -127,7 +135,7 @@ function drawAxes() {
 
     svg.append("text")
         .attr("x", margin.left + width / 2)
-        .attr("y", height + margin.top + 55)
+        .attr("y", height + margin.top + 45)
         .attr("text-anchor", "middle")
         .attr("class", "axis-label")
         .text("GDP per capita, PPP");

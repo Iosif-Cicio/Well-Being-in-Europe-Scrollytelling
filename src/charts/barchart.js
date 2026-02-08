@@ -25,7 +25,7 @@ const SORT_DURATION = 650;
 const COLORS = {
     gdp: "#2c7fb8",
     socialSupport: "#41b6c4",
-    healthyLife: "#a1dab4",
+    healthyLife: "#2f8f5b",
     freedom: "#feb24c",
     trust: "#fd8d3c",
     generosity: "#f03b20",

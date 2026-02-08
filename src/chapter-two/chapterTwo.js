@@ -74,7 +74,7 @@ export async function initChapterTwo() {
 
 function setupDimensions() {
     width = container.node().clientWidth;
-    height = 600;
+    height = container.node().clientHeight || 600;
 }
 
 /* ============================================================

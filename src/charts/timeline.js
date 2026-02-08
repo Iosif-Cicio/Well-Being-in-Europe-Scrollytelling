@@ -319,7 +319,7 @@ export function updateTimelineProgress(data, progress) {
         .append("path")
         .attr("class", "country-line")
         .attr("fill", "none")
-        .attr("stroke", "#8f3c97")
+        .attr("stroke", "#756bb1")
         .attr("stroke-width", 2)
         .merge(paths)
         .attr("stroke-width", c =>
@@ -450,7 +450,7 @@ export function updateTimelineProgress(data, progress) {
         .append("circle")
         .attr("class", "country-dot")
         .attr("r", 4)
-        .attr("fill", "#8f3c97")
+        .attr("fill", "#756bb1")
         .merge(dots)
         .attr("cx", d => xScale(d.year))
         .attr("cy", d => yScale(d.life))

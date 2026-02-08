@@ -66,12 +66,13 @@
 
 /* ============================================================
    CHAPTER THREE — SCROLLYTELLING LAYOUT
-   (matched to Chapter Two)
+   FIX: Changed minmax to allow shrinking on smaller laptops
 ============================================================ */
 
 #chapter-three-scrolly {
     display: grid;
-    grid-template-columns: 420px minmax(640px, 1fr);
+    /* Changed from minmax(640px, 1fr) to allow the chart to shrink */
+    grid-template-columns: 420px minmax(400px, 1fr);
     gap: 64px;
 
     max-width: 1600px;
@@ -279,6 +280,67 @@
 }
 
 /* ============================================================
+   14" LAPTOP / 125% SCALING
+   (effective ~1100-1400px width)
+============================================================ */
+
+@media (max-width: 1400px) {
+    #chapter-three-scrolly {
+        grid-template-columns: 360px minmax(350px, 1fr);
+        gap: 48px;
+        padding: 0 40px;
+    }
+
+    #chapter-three-scrolly .step-content {
+        max-width: 340px;
+    }
+
+    #chapter-three-scrolly figure {
+        min-height: 450px;
+    }
+
+    #chapter-three-viz {
+        padding: 8px 20px 12px 8px;
+    }
+}
+
+@media (max-width: 1200px) {
+    #chapter-three-scrolly {
+        grid-template-columns: 320px minmax(320px, 1fr);
+        gap: 40px;
+        padding: 0 32px;
+    }
+
+    #chapter-three-scrolly .step-content {
+        max-width: 300px;
+        padding-right: 20px;
+    }
+
+    #chapter-three-scrolly .step h2 {
+        font-size: 1.4rem;
+    }
+
+    #chapter-three-scrolly .step p {
+        font-size: 0.95rem;
+    }
+
+    #chapter-three-scrolly figure {
+        min-height: 400px;
+        padding: 14px;
+    }
+
+    #chapter-three-viz {
+        padding: 6px 16px 10px 6px;
+    }
+
+    #chapter-three-source {
+        left: 18px;
+        bottom: 16px;
+        max-width: 360px;
+    }
+}
+
+/* ============================================================
    CHAPTER THREE — HEADING to BAR color association
 ============================================================ */
 
@@ -307,7 +369,7 @@
 ====================== */
 #chapter-three-scrolly .step[data-step="health"] h2,
 #chapter-three-scrolly .step[data-step="health-highlight"] h2 {
-    color: #a1dab4;
+    color: #2f8f5b;
 }
 
 /* ======================
