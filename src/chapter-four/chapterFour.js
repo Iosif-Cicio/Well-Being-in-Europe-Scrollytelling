@@ -39,6 +39,14 @@ const WINNERS = [
     "Romania"
 ];
 
+const STABLE = [
+    "Finland",
+    "Denmark",
+    "Sweden",
+    "Netherlands",
+    "Norway"
+];
+
 // keyboard state
 let ranking2011 = [];
 let kbCountryIndex = null;
@@ -143,6 +151,7 @@ export function initChapterFour() {
     function getAllowedCountryList(activeStep) {
         if (activeStep === 4) return LOSERS.slice();
         if (activeStep === 5) return WINNERS.slice();
+        if (activeStep === 5.5) return STABLE.slice();
         return ranking2011.slice();
     }
 
@@ -176,7 +185,7 @@ export function initChapterFour() {
         kbCountryIndex = 0;
         kbYearIndex = 0;
 
-        if (activeStep !== 4 && activeStep !== 5) {
+        if (activeStep !== 4 && activeStep !== 5 && activeStep !== 5.5) {
             clickFocusActive = true;
             setClickFocusCountry(list[kbCountryIndex], data, currentTimelineProgress);
         }
@@ -193,7 +202,7 @@ export function initChapterFour() {
         const country = list[kbCountryIndex];
         const year = years[kbYearIndex];
 
-        if (activeStep === 4 || activeStep === 5) {
+        if (activeStep === 4 || activeStep === 5 || activeStep === 5.5) {
             clickFocusActive = false;
             setKeyboardFocus(country, year, data, currentTimelineProgress);
             return;
@@ -281,6 +290,10 @@ export function initChapterFour() {
             clickFocusActive = false;
             highlightCountries(WINNERS, data, timelineProgress);
 
+        } else if (activeStep === 5.5) {
+            clickFocusActive = false;
+            highlightCountries(STABLE, data, timelineProgress);
+
         } else {
             resetTimelineHighlight(data, timelineProgress);
         }
@@ -313,7 +326,7 @@ export function initChapterFour() {
             kbYearIndex = 0;
         }
 
-        clickFocusActive = (activeStep !== 4 && activeStep !== 5);
+        clickFocusActive = (activeStep !== 4 && activeStep !== 5 && activeStep !== 5.5);
         accumulatedScroll = 0;
 
         applyKeyboardFocus(activeStep);
