@@ -181,3 +181,16 @@ An offline build is included with the thesis submission to ensure long-term repr
 - **Weber, W., Engebretsen, M., & Kennedy, H. (2018).** Data stories: Rethinking journalistic storytelling in the context of data journalism. *Studies in Communication Sciences, 18*(1), 191-206.  
   *Connects narrative visualization research to data journalism practice - demonstrates relevance of interactive versus static approaches.*
 
+---
+
+## License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+
+### Data Licenses
+
+- World Happiness Report data: Available under Creative Commons licensing
+- Our World in Data: CC BY 4.0
+- World Bank data: CC BY 4.0
+
+Please cite the original sources when using this data.
