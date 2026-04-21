@@ -1,11 +1,14 @@
 /* ============================================================
    LIFE EVALUATION OVER TIME — EUROPE
-   Source: Our World in Data (Gallup World Poll, annual estimates)
+   Source: Our World in Data (Self-reported life satisfaction)
+           Underlying data: Gallup World Poll, Cantril Ladder
    Inspiration: https://data.worldhappiness.report/chart
    Variable: Life evaluation / Cantril Ladder (0–10)
    Coverage: EU-27 + EFTA + United Kingdom
    Notes:
-   - Annual values only (no rolling averages)
+   - One value per year per country
+   - Each value is a three-year rolling average
+     (e.g., the 2024 value is the 2022–2024 average)
    - Missing years reflect survey gaps (e.g. 2013)
 ============================================================ */
 
