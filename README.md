@@ -118,14 +118,7 @@ npm run preview
 
 ## Browser Support
 
-The application is designed for **desktop viewing** and optimized for modern desktop browsers:
-
-- Chrome/Edge (v90+)
-- Firefox (v88+)
-- Safari (v14+)
-
-**Optimized viewport width:** roughly 1200–1600px
-**Mobile support:** Not available. The experience is intentionally designed as a long-form, desktop-oriented narrative that depends on pointer-based interactions such as hover tooltips. Supporting mobile would require a different interaction model, introducing variation between the two prototypes and diluting the content equivalence the thesis comparison depends on.
+Designed for desktop viewing, and optimized for viewport widths of roughly 1200–1600px. Mobile is not supported, as the thesis centers on comparing presentation formats rather than on cross-platform development, which would have added significant development work and complicated the user testing without adding much value beyond wider reach.
 
 ---
 
